@@ -33,11 +33,11 @@ function Header() {
   return (
     <nav className="flex-between w-full mb-16 p-4 ">
       {/* <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div> */}
-        <Link href="/" className="flex gap-2 flex-center h-10">
-            <Image src={'/flashy-logo.png'} width={200.387} height={50} alt="Flashy McFlasherson" />
+        <Link href="/" className="flex gap-2 flex-center ">
+            <Image src={'/flashy-logo.png'}  width={200.387} height={50} alt="Flashy McFlasherson" />
         </Link>
 
-<h1>ttt</h1>
+
 
 
 
@@ -45,13 +45,7 @@ function Header() {
        <div className="sm:flex hidden">
                 {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
-                        <Link
-                            href="/create-prompt"
-                            className="black_btn"
-                            
-                        >
-                            Create Post
-                        </Link>
+
 
                         <button 
                             type="button"
