@@ -50,6 +50,20 @@ nav h1 {
   font-style: italic;
 }
 
+.studio-sidenav {
+  height: 100%;
+  width: 50;
+  position: fixed;
+  z-index: 1;
+  top: 50px;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
 .lightning {
   background-color: clear;
   display: inline-block;
