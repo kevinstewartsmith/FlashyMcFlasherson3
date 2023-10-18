@@ -1,0 +1,475 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  background: #eee;
+  /* background-color: #577191; */
+  background-color: lightblue;
+  
+  /* background-color: black; */
+  /* background-color: white; */
+  /* background-image: url("https://www.transparenttextures.com/patterns/washi.png"); */
+  padding: 0 0px;
+
+  
+}
+
+nav {
+  background-color: #ff5b5b;
+  /* margin: auto -16px;
+  padding: 16px 32px; */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  height: 100px;
+}
+
+nav h1 {
+  color: #fff;
+  font-family: "Lobster", cursive;
+  font-size: 2.8rem;
+  font-weight: bold;
+  font-style: italic;
+  font-stretch: expanded;
+  letter-spacing: 0.1rem;
+}
+.italics {
+  font-style: italic;
+}
+
+.lightning {
+  background-color: clear;
+  display: inline-block;
+  transform: rotate(15deg);
+  position: relative;
+  margin-left: 10px;
+  
+}
+.centered-heading {
+  text-align: center;
+}
+
+/** From original Repo - START*/
+.collection-feed {
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+.note-div {
+  top: 0%;
+}
+.note h1 {
+  font-size: 1.1em;
+  /* font-family: "Lobster", cursive; */
+  margin-bottom: 6px;
+}
+.note p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.crazy {
+  padding-bottom: 40px;
+}
+
+.center {
+  text-align: center;
+  /* border: 3px solid blue; */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+}
+
+.note {
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0 2px 5px #ccc;
+  /* padding: 10px; */
+  width: 100%;
+  height: 170px;
+  /* margin: 16px; */
+  float: left;
+  position: relative;
+  
+}
+
+.c {
+  position: absolute;
+  max-width: 320px;
+  max-height: 180px;
+  width: 340px;
+  height: 180px;
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.d {
+  position: absolute;
+  max-width: 1000px;
+  max-height: 340px;
+  width: 500px;
+  height: 340px;
+  cursor: pointer;
+  will-change: transform, opacity;
+  border-width: 00px;
+  border-color: green;
+}
+
+.front,
+.back {
+  background-size: cover;
+  box-shadow: 0 3px 10px rgba(0, 1, 0, 0.3);
+}
+
+.back {
+  /*background-image: url(https://images.unsplash.com/photo-1544511916-0148ccdeb877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1901&q=80i&auto=format&fit=crop);*/
+  background-color: white;
+  
+  
+}
+
+.front {
+  /*background-image: url(https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80&auto=format&fit=crop);*/
+  background-color: white;
+  border-width: 0px;
+  border-color: blue;
+}
+
+.flash-card {
+  background: clear;
+  border-radius: 7px;
+  /* box-shadow: 0 2px 5px rgb(100, 95, 95); */
+  padding: 0px;
+  width: 320px;
+  height: 180px;
+  margin: 16px;
+  float: left;
+  position: relative;
+}
+
+.desk-parent {
+  top: 0%;
+ position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.desk {
+  position: absolute;
+  /* height: 100%; */
+  width: 80%;
+  
+  background-color: clear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 30 30, auto;
+}
+
+.deck-container {
+  position: relative;
+  background: clear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  height: 440px; 
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 50px;
+  margin-bottom: auto;
+  background-color: clear;
+  /* overflow: hidden; */
+  /* width: 100%;
+  height: 100%; */
+  /* margin-left: 240px; */
+  
+}
+
+.spring-parent {
+  position: absolute;
+  /* width: 100%;
+  height: 100%; */
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* overflow: hidden; */
+}
+
+.spring-child {
+  background-color: clear;
+  background-size: auto 85%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 500px;
+  max-width: 90%;
+  height: 340px;
+  max-height: 80%;
+  will-change: transform;
+  border-radius: 10px;
+  background-color: clear;
+  
+  /* box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3); */
+}
+
+
+/** From original Repo - END*/
+
+form.create-note {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 50px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+form.create-note input,
+form.create-note textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+}
+form.create-note button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: #f5ba13;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+form.create-note {
+  position: relative;
+  width: 480px;
+  margin: 30px auto 70px auto;
+  background: #fff;
+  padding: 15px;
+  border-radius: 7px;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+form.create-note input,
+form.create-note textarea {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  /*font-size: 1.2em;*/
+  font-family: inherit;
+  resize: none;
+}
+
+form.create-note input {
+  font-size: 1.2em;
+}
+form.create-note textarea {
+  font-size: 0.8em;
+}
+form.create-note button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: #ff5b5b;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 120px 24px 160px 24px;
+  pointer-events: none;
+}
+
+.main:before {
+  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  position: absolute;
+  content: "";
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+.main:after {
+  content: "";
+  background-image: url("/assets/images/grid.svg");
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.4;
+  filter: invert(1);
+}
+
+.gradient {
+  height: fit-content;
+  z-index: 3;
+  width: 100%;
+  max-width: 640px;
+  background-image: radial-gradient(
+      at 27% 37%,
+      hsla(215, 98%, 61%, 1) 0px,
+      transparent 0%
+    ),
+    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  filter: blur(100px) saturate(150%);
+  top: 80px;
+  opacity: 0.15;
+}
+
+@media screen and (max-width: 640px) {
+  .main {
+    padding: 0;
+  }
+}
+
+/* Tailwind Styles */
+
+.app {
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+.black_btn {
+  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+}
+
+.white_btn {
+  @apply rounded-full border border-white bg-white py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.head_text {
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+}
+
+.orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.green_gradient {
+  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+}
+
+.blue_gradient {
+  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+.desc {
+  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+}
+
+.search_input {
+  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+}
+
+.copy_btn {
+  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+}
+
+.glassmorphism {
+  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+}
+
+.prompt_layout {
+  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+}
+
+/* Feed Component */
+.feed {
+  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+}
+
+/* Form Component */
+.form_textarea {
+  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+.form_input {
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+}
+
+/* Nav Component */
+.logo_text {
+  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+}
+
+.dropdown {
+  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
+}
+
+.dropdown_link {
+  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
+}
+
+/* PromptCard Component */
+.prompt_card {
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-[360px];
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
