@@ -6,6 +6,8 @@ import { Montserrat } from "next/font/google";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import { FlashCardContext } from "@components/Contexts/FlashCardContext";
+import Image from "next/image";
+
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -59,6 +61,13 @@ function Note(props) {
        {/* <Link href={`/collections/${props.id}`}> */}
         <div className="note-div">
           <div className="center">
+            <Image
+              src="https://images.unsplash.com/photo-1525220964737-6c299398493c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHwxfHxhbGFza2F8ZW58MHx8fHwxNjk3NzY5OTMwfDA&ixlib=rb-4.0.3&q=80&w=200"
+              alt="collection image"
+              width={150}
+              height={100}
+            />
+
             <h1 className={montserrat.className}>{props.collectionName}</h1>
             <p>{mouseEntered ? props.description  : null}</p>
             

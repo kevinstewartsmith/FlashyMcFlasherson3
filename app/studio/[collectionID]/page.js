@@ -108,7 +108,8 @@ const Studio = ({params}) => {
         }
       };
       async function getPhotos() {
-        const response = await fetch(`/api/images/search?query=pizza`);
+        const response = await fetch(`/api/images/search/pizza-time`);
+        //const response = await fetch(`/api/test`);
 
         // if (!response.ok) {
         //     throw new Error('Network response was not ok');
@@ -129,7 +130,7 @@ const Studio = ({params}) => {
                 <button onClick={openClicked}>Click me</button> */}
                 {/* <button onClick={galleryOpenClicked}>Open Gallery</button> */}
 
-                <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="column" >
+                <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="column" style={{ top:0 }}>
                     { menuItems.map((item, idx) => (
                         <Grid 
                             item 

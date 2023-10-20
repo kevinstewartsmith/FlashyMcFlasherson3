@@ -14,6 +14,10 @@ const fcCollectionsSchema = Schema({
       type: String,
       required: false
     },
+    imageURL: {
+      type: String,
+      required: false
+    },
     flashCards: {
       type: [FlashCard.schema],
       required: true

@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Grid } from '@mui/material'
 import Note from '@components/CollectionUI/note'
 import { CollectionContext } from '../Contexts/CollectionContext'
+import CollectionCard from './CollectionCard'
 
 const CollectionList = ({data}) => {
     return (
@@ -11,18 +12,27 @@ const CollectionList = ({data}) => {
                 container
                 //rowSpacing={1}
                 spacing={2}
-                //columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                //display="flex"
                 justify="space-evenly"
                 alignItems="center"
+                //justifyContent="center"
             >       
                 {data.map((collection,idx) => (
                     <Grid key={idx} item padding={1} xs={4} >
-                        <Note
+                        {/* <Note
                             key={idx}
                             id={collection._id}
                             collectionName={collection.name}
                             description={collection.description}
 
+                        /> */}
+                        <CollectionCard 
+                            key={idx}
+                            id={collection._id}
+                            collectionName={collection.name}
+                            description={collection.description}
+                            image="https://images.unsplash.com/photo-1525220964737-6c299398493c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHwxfHxhbGFza2F8ZW58MHx8fHwxNjk3NzY5OTMwfDA&ixlib=rb-4.0.3&q=80&w=200"
                         />
                     </Grid>
                 ))}
