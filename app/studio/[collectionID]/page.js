@@ -108,7 +108,7 @@ const Studio = ({params}) => {
         }
       };
       async function getPhotos() {
-        const response = await fetch(`/api/images/search/pizza-time`);
+        const response = await fetch(`/api/images/search?query=${photoInputValue}`);
         //const response = await fetch(`/api/test`);
 
         // if (!response.ok) {

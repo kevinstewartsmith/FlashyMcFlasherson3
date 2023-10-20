@@ -3,8 +3,10 @@
 //import { env } from "eslint-config-next";
 
 export const GET = async (req,res) => {
-    console.log("api/search/photos.js GET");
-    
+    console.log("api/search/photos.js GET DYNAMIC");
+    const searchURL = new URL(req.url);
+    console.log(searchURL);
+
     // const body = await req.json();
     // console.log(body);
     // const {searchParams} = new URL(req.url);
@@ -17,7 +19,7 @@ export const GET = async (req,res) => {
      const url = "https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=alaska"
      //const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o`
      console.log("pizza time");
-     console.log(req.url.query);
+     //console.log(req.url);
      //const {query} = new URL(req.url)
       //console.log(query);
    

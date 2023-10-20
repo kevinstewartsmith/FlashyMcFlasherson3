@@ -1,19 +1,23 @@
 // pages/api/wiki.js
 
-import { env } from "eslint-config-next";
+
 
 export const GET = async (req,res) => {
-    console.log("api/search/photos.js GET");
-    const body = await req.json();
-    console.log(body);
-    const {searchParams} = new URL(req.url);
-    console.log(searchParams);
-     //const pageTitle = req.query.pageTitle;
+    console.log("api/search/photos.js GET STATIC");
+    const urlQuery = new URL(req.url)
+    const searchQuery = urlQuery.searchParams.get("query")
+    console.log(searchQuery);
+    
+    
+     
      const test = "alaska"
-     const unsplashID = env.UNSPLASH_ID;
+     const unsplashID = process.env.UNSPLASH_ID;
      //console.log(pageTitle);
      //const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=test`;
-     const url = "https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=alaska"
+     //const url = "https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=alaska"
+
+     const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=${searchQuery}`
+
      //const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o`
      console.log("pizza time");
      console.log(req.url.query);
