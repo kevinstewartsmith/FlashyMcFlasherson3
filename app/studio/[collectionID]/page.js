@@ -45,32 +45,61 @@ const Studio = ({params}) => {
     const studioDrawerAnimation = useSpring({
         width: open ? 390 : 390,
         transform: open ?  "translateX(60px)" :  "translateX(-425px)",
-        
+        height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
        
     })
+
+    const navOptionAnimation = useSpring({
+        from: {
+            height: "calc(100vh - 70px)",
+            backgroundColor:"green",
+            margin: 20,
+            
+        },
+        to: {
+            height: galleryOpen ? "calc(100vh - 270px)" : "calc(100vh - 90px)",
+        },
+    });
     
  
     const studioPreviewAnimation = useSpring({
         from: {
-            width: "calc(100vw - 80px)",
-            marginLeft: 50,
+            width: "calc(100vw - 65px)",
+            marginLeft: 65,
             height: "calc(100vh - 50px)",
             backgroundColor: "transparent",
         },
         to: {
-            width: open ? "calc(100vw - 425px)" : "calc(100vw - 50px)",
-            marginLeft: open ? 425 : 50,
-            height: galleryOpen ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
+            width: open ? "calc(100vw - 450px)" : "calc(100vw - 65px)",
+            marginLeft: open ? 450 : 65,
+            height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
             backgroundColor: open ? "yellow" : "teal",
+            borderWidth: 10,
+            borderColor: "orange",
         },
     });
+
+    const photoGalleryAnimation = useSpring({
+        from: {
+             marginTop:20, 
+             backgroundColor:"yellow", 
+             overflow: "auto",
+             height: "calc(100vh - 200px)", 
+        },
+        to: {
+            marginTop:20, 
+            backgroundColor:"yellow", 
+            overflow: "auto",
+            height: galleryOpen? "calc(100vh - 380px)": "calc(100vh - 200px)", 
+        },
+    })
     
     const studioGalleryAnimation = useSpring({
         from: {
-            transform:  "translateY(200px)"
+            transform:  "translateY(150px)"
         },
         to: { 
-            transform: galleryOpen ?  "translateY(0px)" :  "translateY(200px)"
+            transform: galleryOpen ?  "translateY(0px)" :  "translateY(150px)"
         },
     });
 
@@ -198,11 +227,16 @@ const Studio = ({params}) => {
                             <button style={{ position:"fixed", right:0, top: 0}}>
                                 <CloseIcon onClick={closeDrawer} />
                             </button>
-                            <div style={{
-                                backgroundColor:"green",
-                                margin: 20,
-                                height: "100%",
-                            }}>
+                            <animated.div 
+                                // style={{
+                                //     backgroundColor:"green",
+                                //     margin: 20,
+                                //     //height: "100%",
+                                //     overflow: "auto"
+                                // }}
+                                style={navOptionAnimation}
+                            
+                            >
 
                                 
                                 <h1 style={{fontSize:"1.5em"}}><strong>Photos</strong></h1>
@@ -229,9 +263,10 @@ const Studio = ({params}) => {
                                             </InputAdornment>
                                         )
                                     }}
+                                    fullWidth
                                 />
                                 
-                                <div style={{ marginTop:20 }}>
+                                <animated.div style={photoGalleryAnimation} >
                                     
                                         {
                                         photoSearchResults.length > 0 ? 
@@ -248,10 +283,10 @@ const Studio = ({params}) => {
                                         : null
                                     }
 
-                                </div>
+                                </animated.div>
                                
 
-                             </div>
+                             </animated.div>
                              
                              
                         </animated.div>
@@ -274,6 +309,7 @@ const Studio = ({params}) => {
                                 borderRadius: 10,
                                 borderColor: "green",
                                 borderWidth: 10,
+                                
                                 
 
                             }}>
