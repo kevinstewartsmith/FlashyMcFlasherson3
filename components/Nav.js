@@ -7,7 +7,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { signIn, signOut, useSession, getProviders } from "next-auth/react"
 import '@styles/globals.css'
-
+import Logo from './Logo';
 
 function Header() {
   
@@ -16,6 +16,7 @@ function Header() {
 
     const [providers, setProviders] = useState(null)
     const [toggleDropDown, setToggleDropDown] = useState(false)
+   
 
     
 
@@ -31,10 +32,11 @@ function Header() {
  
   
   return (
-    <nav className="flex-between w-full mb-16 p-4 ">
+    <nav className="flex-between w-full mb-0 p-0 ">
       {/* <div  className="italics" onClick={() => {}}><h1 className={lobsterTwo.className}>Flashy<div className="lightning"><FlashOnIcon fontSize="56rem"/></div>McFlasherson</h1></div> */}
-        <Link href="/" className="flex gap-2 flex-center ">
-            <Image src={'/flashy-logo.png'}  width={200.387} height={50} alt="Flashy McFlasherson" />
+        <Link href="/" className="flex gap-3 pl-6 flex-center ">
+            <Image src={'/flashy-logo3.png'}  width={265} height={30} alt="Flashy McFlasherson" />
+            {/* <Logo /> */}
         </Link>
 
 

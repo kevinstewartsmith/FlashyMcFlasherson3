@@ -44,7 +44,8 @@ const Studio = ({params}) => {
 
     const studioDrawerAnimation = useSpring({
         width: open ? 390 : 390,
-        transform: open ?  "translateX(0px)" :  "translateX(-425px)",
+        transform: open ?  "translateX(60px)" :  "translateX(-425px)",
+        
        
     })
     
@@ -52,13 +53,15 @@ const Studio = ({params}) => {
     const studioPreviewAnimation = useSpring({
         from: {
             width: "calc(100vw - 80px)",
-            left: 0,
+            marginLeft: 80,
             height: "calc(100vh - 50px)",
+            backgroundColor: "transparent",
         },
         to: {
             width: open ? "calc(100vw - 505px)" : "calc(100vw - 80px)",
-            left: open ? 425 : 0,
+            marginLeft: open ? 425 : 80,
             height: galleryOpen ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
+            backgroundColor: open ? "yellow" : "teal",
         },
     });
     
@@ -124,7 +127,7 @@ const Studio = ({params}) => {
     }
  
     return (
-        <div>
+        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor:"pink"}}>
             <div className='studio-sidenav'>
                 {/* NavBar
                 <button onClick={openClicked}>Click me</button> */}
@@ -196,7 +199,7 @@ const Studio = ({params}) => {
                                 <CloseIcon onClick={closeDrawer} />
                             </button>
                             <div style={{
-                                backgroundColor:"white",
+                                backgroundColor:"green",
                                 margin: 20,
                                 height: "100%",
                             }}>
@@ -269,7 +272,8 @@ const Studio = ({params}) => {
                                 justifyContent:"center",
                                 alignItems: "center",
                                 borderRadius: 10,
-                                borderColor: "green"
+                                borderColor: "green",
+                                borderWidth: 10,
                                 
 
                             }}>

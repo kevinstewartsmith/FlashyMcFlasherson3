@@ -28,7 +28,7 @@ const CollectionParent = () => {
   }, [updateScrollPosition]);
 
   return (
-    <div>
+    <div style={{backgroundColor: "yellow"}}>
         <CreateCollection
           //onAdd={collectionChanged}
           inputType={"collection"}
