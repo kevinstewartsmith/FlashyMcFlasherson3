@@ -53,13 +53,13 @@ const Studio = ({params}) => {
     const studioPreviewAnimation = useSpring({
         from: {
             width: "calc(100vw - 80px)",
-            marginLeft: 80,
+            marginLeft: 50,
             height: "calc(100vh - 50px)",
             backgroundColor: "transparent",
         },
         to: {
-            width: open ? "calc(100vw - 505px)" : "calc(100vw - 80px)",
-            marginLeft: open ? 425 : 80,
+            width: open ? "calc(100vw - 425px)" : "calc(100vw - 50px)",
+            marginLeft: open ? 425 : 50,
             height: galleryOpen ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
             backgroundColor: open ? "yellow" : "teal",
         },
