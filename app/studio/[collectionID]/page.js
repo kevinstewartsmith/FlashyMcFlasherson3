@@ -27,6 +27,7 @@ const Studio = ({params}) => {
     const [flashCardActiveItem, setFlashCardActiveItem] = useState(null)
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
+    const developerModeOn = false;
     
     const menuItems = [
         { name: "Themes", icon: <BrushIcon fontSize='large' /> },
@@ -46,13 +47,15 @@ const Studio = ({params}) => {
         width: open ? 390 : 390,
         transform: open ?  "translateX(60px)" :  "translateX(-425px)",
         height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
+        backgroundColor: developerModeOn ? "yellow" : "white",
+        config: { duration: 250 }
        
     })
 
     const navOptionAnimation = useSpring({
         from: {
             height: "calc(100vh - 70px)",
-            backgroundColor:"green",
+            backgroundColor:developerModeOn? "green": "white",
             margin: 20,
             
         },
@@ -73,24 +76,26 @@ const Studio = ({params}) => {
             width: open ? "calc(100vw - 450px)" : "calc(100vw - 65px)",
             marginLeft: open ? 450 : 65,
             height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
-            backgroundColor: open ? "yellow" : "teal",
+            backgroundColor: developerModeOn ? "yellow" : "lightgrey",
             borderWidth: 10,
-            borderColor: "orange",
+            borderColor: developerModeOn ? "orange" : "lightgrey",
+            config: { duration: 1000 }
         },
     });
 
     const photoGalleryAnimation = useSpring({
         from: {
              marginTop:20, 
-             backgroundColor:"yellow", 
+             backgroundColor: developerModeOn ? "yellow" : "white", 
              overflow: "auto",
              height: "calc(100vh - 200px)", 
         },
         to: {
             marginTop:20, 
-            backgroundColor:"yellow", 
+            backgroundColor: developerModeOn ? "yellow" : "white", 
             overflow: "auto",
             height: galleryOpen? "calc(100vh - 380px)": "calc(100vh - 200px)", 
+            config: { duration: 1000 }
         },
     })
     
@@ -109,6 +114,7 @@ const Studio = ({params}) => {
         },
         to: {
             height: shrinkDrawerContainer ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
+            config: { duration: 1000 }
         },
     });
 
@@ -156,7 +162,7 @@ const Studio = ({params}) => {
     }
  
     return (
-        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor:"pink"}}>
+        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor:developerModeOn ? "blue" : "white"}}>
             <div className='studio-sidenav'>
                 {/* NavBar
                 <button onClick={openClicked}>Click me</button> */}
@@ -224,9 +230,7 @@ const Studio = ({params}) => {
                 {/* <animated.div className="canvas-and-drawer" style={galleryOpenAnimation}> */}
                     <animated.div className="studio-drawer" style={studioDrawerAnimation}>
                         <animated.div className="drawer-container" style={drawerContainerAnimation}>
-                            <button style={{ position:"fixed", right:0, top: 0}}>
-                                <CloseIcon onClick={closeDrawer} />
-                            </button>
+
                             <animated.div 
                                 // style={{
                                 //     backgroundColor:"green",
@@ -240,6 +244,9 @@ const Studio = ({params}) => {
 
                                 
                                 <h1 style={{fontSize:"1.5em"}}><strong>Photos</strong></h1>
+                                <button style={{ position:"absolute", right:20, top: 25}}>
+                                    <CloseIcon onClick={closeDrawer} />
+                                </button>
                                 
                                 <TextField
                                     variant="outlined"
