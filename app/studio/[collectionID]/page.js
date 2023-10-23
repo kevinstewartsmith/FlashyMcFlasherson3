@@ -20,6 +20,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import { set } from "mongoose";
 //import next image
 import Image from "next/image";
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
+import PhotoSearch from "@components/StudioUI/PhotoSearch";
 
 
 const Studio = ({params}) => {
@@ -251,51 +253,7 @@ const Studio = ({params}) => {
                                     <CloseIcon onClick={closeDrawer} />
                                 </button>
                                 
-                                <TextField
-                                    variant="outlined"
-                                    placeholder="Search photos from Unsplash..."
-                                    width="100%"
-                                    onChange={handlePhotoInputChange}
-                                    onKeyDown={handleKeyPress}
-                                    InputProps={{
-                                        // endAdornment: (
-                                        // <InputAdornment position="end">
-                                        //     <IconButton>
-                                        //     <SearchIcon />
-                                        //     </IconButton>
-                                        // </InputAdornment>
-                                        // ),
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                <IconButton>
-                                                <SearchIcon />
-                                                </IconButton>
-                                            </InputAdornment>
-                                        )
-                                    }}
-                                    fullWidth
-                                />
-                                
-                                <animated.div style={photoGalleryAnimation} >
-                                    
-                                        {
-                                        photoSearchResults.length > 0 ? 
-                                            photoSearchResults.map((photo,idx) => (
-                                                <div key={idx}>
-                                                    <Image
-                                                        src={photo.urls.thumb}
-                                                        alt="Picture of the author"
-                                                        width={100}
-                                                        height={100}        
-                                                    />
-                                                </div>
-                                            ))
-                                        : null
-                                    }
-
-                                </animated.div>
-                               
-
+                                <PhotoSearch photoGalleryAnimation={photoGalleryAnimation} />
                              </animated.div>
                              
                              
