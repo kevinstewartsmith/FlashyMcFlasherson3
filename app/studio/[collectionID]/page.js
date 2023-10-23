@@ -55,12 +55,13 @@ const Studio = ({params}) => {
     const navOptionAnimation = useSpring({
         from: {
             height: "calc(100vh - 70px)",
-            backgroundColor:developerModeOn? "green": "white",
+            backgroundColor:developerModeOn? "yellow": "white",
             margin: 20,
             
         },
         to: {
             height: galleryOpen ? "calc(100vh - 270px)" : "calc(100vh - 90px)",
+            config: { duration: 1000 }
         },
     });
     
@@ -104,13 +105,15 @@ const Studio = ({params}) => {
             transform:  "translateY(150px)"
         },
         to: { 
-            transform: galleryOpen ?  "translateY(0px)" :  "translateY(150px)"
+            transform: galleryOpen ?  "translateY(0px)" :  "translateY(150px)",
+            config: { duration: 1000 }
         },
     });
 
     const drawerContainerAnimation = useSpring({
         from: {
             height: "calc(100vh - 50px)",
+            backgroundColor: developerModeOn ? "pink" : "white",
         },
         to: {
             height: shrinkDrawerContainer ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
@@ -306,16 +309,16 @@ const Studio = ({params}) => {
                                 style={{ 
                                 height: 50, 
                                 width: 50, 
-                                backgroundColor:"red",
+                                backgroundColor:"lightblue",
                                 position:"absolute",
-                                top: 5,
+                                top: 70,
                                 right: 5,
                                 display: "flex",
                                 justifyContent:"center",
                                 alignItems: "center",
                                 borderRadius: 10,
-                                borderColor: "green",
-                                borderWidth: 10,
+                                borderColor: "black",
+                                borderWidth: 1,
                                 
                                 
 
