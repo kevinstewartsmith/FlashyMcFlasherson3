@@ -10,6 +10,7 @@ import PsychologyIcon from '@mui/icons-material/Psychology';
 import EditIcon from '@mui/icons-material/Edit';
 import { FlashCardContextProvider, FlashCardContext } from '@components/Contexts/FlashCardContext';
 import { useRouter } from 'next/navigation';
+import Image from "next/image"
 
 const FlashCardUIParent = (props) => {
     const router = useRouter();
@@ -68,9 +69,48 @@ const FlashCardUIParent = (props) => {
   
   
     return (
-    <div>  
+    <div style={{
+        display: "flex", 
+        width: "100%"
+    }}>
+        <div style={{
+            flex: 1,
+            backgroundColor: "transparent",
+            width: "20vw",
+            padding: "10px",
+        }}>
+        
+            <div className="image-container" style={{
+                    width: "100%", 
+                    height: "150px",
+                    overflow: "hidden", 
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    //borderRadius: "50%"
+                }}>  
+            
+
+                <Image 
+                    src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHw3fHx2aWV0bmFtfGVufDB8fHx8MTY5ODI5ODc4OXww&ixlib=rb-4.0.3&q=80&w=200" // Replace with the actual path to your image
+                    alt="Your Image"
+                    width={150} // Set the desired width
+                    height={150} // Set the desired height
+                    layout="responsive" // Maintain aspect ratio
+                />
+             </div> 
             <h1 className='centered-heading'>{collection.name}</h1> 
             <h1 className='centered-heading'>{collection.description}</h1>
+        </div>
+        <div style={{
+                border: "1px solid transparent",
+                //marginLeft: "20vw",
+                flex: 4, /* Make the right div take up 4 times the space of the left div */
+                backgroundColor: "transparent", /* Add background color for demonstration */
+                width: "80vw", /* Set the right div to 80% of viewport width */
+                padding: "10px" 
+            }}>  
+            
             <CreateFlashCard 
                 collectionID={props.collectionID} 
                 //onAdd={collectionChanged}
@@ -104,12 +144,10 @@ const FlashCardUIParent = (props) => {
                     
                 )) }
             </SpeedDial>
-
-          
-        
-
  
+        </div>
     </div>
+    
   )
 }
 

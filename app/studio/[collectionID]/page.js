@@ -29,13 +29,13 @@ const Studio = ({params}) => {
     const [flashCardActiveItem, setFlashCardActiveItem] = useState(null)
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
-    const developerModeOn = false;
+    const developerModeOn = true;
     
     const menuItems = [
-        { name: "Themes", icon: <BrushIcon fontSize='large' /> },
-        { name: "Photos", icon: <CropOriginalIcon fontSize='large' /> },
-        { name: "APIs", icon: <TravelExploreIcon fontSize='large' /> },
-        { name: "Uploads", icon:<UploadFileIcon fontSize='large' /> }
+        { name: "Themes", icon: <BrushIcon fontSize='large' />, component: <div></div> },
+        { name: "Photos", icon: <CropOriginalIcon fontSize='large' />, component: <div></div> },
+        { name: "APIs", icon: <TravelExploreIcon fontSize='large' />, component: <div></div> },
+        { name: "Uploads", icon:<UploadFileIcon fontSize='large' />, component: <div></div> }
     ]
 
     const [open, setOpen] = useState(false);
@@ -47,7 +47,7 @@ const Studio = ({params}) => {
 
     const studioDrawerAnimation = useSpring({
         width: open ? 390 : 390,
-        transform: open ?  "translateX(60px)" :  "translateX(-425px)",
+        transform: open ?  "translateX(60px)" :  "translateX(-440px)",
         height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
         backgroundColor: developerModeOn ? "yellow" : "white",
         config: { duration: 250 }
@@ -167,7 +167,7 @@ const Studio = ({params}) => {
     }
  
     return (
-        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor:developerModeOn ? "blue" : "white"}}>
+        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor: developerModeOn ? "blue" : "white"}}>
             <div className='studio-sidenav'>
                 {/* NavBar
                 <button onClick={openClicked}>Click me</button> */}
@@ -231,29 +231,25 @@ const Studio = ({params}) => {
                     )) }
                 </Grid>  
             </div>
-            <div className="studio-container">
+            {/* <div className="studio-container"> */}
                 {/* <animated.div className="canvas-and-drawer" style={galleryOpenAnimation}> */}
                     <animated.div className="studio-drawer" style={studioDrawerAnimation}>
                         <animated.div className="drawer-container" style={drawerContainerAnimation}>
 
-                            <animated.div 
-                                // style={{
-                                //     backgroundColor:"green",
-                                //     margin: 20,
-                                //     //height: "100%",
-                                //     overflow: "auto"
-                                // }}
-                                style={navOptionAnimation}
-                            
-                            >
+                            <animated.div style={navOptionAnimation}>
 
                                 
                                 <h1 style={{fontSize:"1.5em"}}><strong>Photos</strong></h1>
                                 <button style={{ position:"absolute", right:20, top: 25}}>
                                     <CloseIcon onClick={closeDrawer} />
                                 </button>
-                                
-                                <PhotoSearch photoGalleryAnimation={photoGalleryAnimation} />
+
+                                <PhotoSearch 
+                                    //photoGalleryAnimation={photoGalleryAnimation} 
+                                    developerModeOn={developerModeOn}
+                                    galleryOpen={galleryOpen}
+
+                                />
                              </animated.div>
                              
                              
@@ -301,7 +297,7 @@ const Studio = ({params}) => {
                 <animated.div className="gallery-container" style={studioGalleryAnimation}>
                     <Gallery collectionID={params.collectionID} toggleGallery={galleryOpenClicked}/>
                 </animated.div>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

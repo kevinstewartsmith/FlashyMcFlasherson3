@@ -13,6 +13,23 @@ const PhotoSearch = (props) => {
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
 
+    const photoGalleryAnimation = useSpring({
+        from: {
+             marginTop:20, 
+             backgroundColor: props.developerModeOn ? "yellow" : "white", 
+             overflow: "auto",
+             height: "calc(100vh - 200px)", 
+        },
+        to: {
+            marginTop:20, 
+            backgroundColor: props.developerModeOn ? "yellow" : "white", 
+            overflow: "auto",
+            height: props.galleryOpen? "calc(100vh - 380px)": "calc(100vh - 200px)", 
+            config: { duration: 1000 }
+        },
+    })
+
+
     function handlePhotoInputChange(e) {
         console.log(e.target.value);
         setPhotoInputValue(e.target.value)
@@ -67,23 +84,31 @@ const PhotoSearch = (props) => {
                 fullWidth
             />
                                     
-            <animated.div style={props.photoGalleryAnimation} >
-                                        
+            <animated.div style={photoGalleryAnimation} >
+                <ResponsiveMasonry columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}>
+                    <Masonry gutter='15px'>           
                     {
                     photoSearchResults.length > 0 ? 
                         photoSearchResults.map((photo,idx) => (
-                            <div key={idx}>
+                          
+                            
+                            
+                                
+                                <div key={idx}>
                                 <Image
                                     src={photo.urls.thumb}
                                     alt="Picture of the author"
                                     width={100}
                                     height={100}        
                                 />
-                            </div>
+                                </div>
+                           
+                            
                         ))
                     : null
                 }
-
+                    </Masonry>
+                </ResponsiveMasonry>
             </animated.div>
         </div>
   )

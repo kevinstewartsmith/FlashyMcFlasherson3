@@ -132,15 +132,15 @@ const Gallery = ({items, collectionID, toggleGallery}) => {
                   <h1>{item.front}</h1>
 
                 </div> */}
-                <FlashCard 
+                {/* <FlashCard 
                   key={item._id}
                   id={item._id}
                   front={item.front}
                   back={item.back}
                   width={"100%"}
                   height={"18vh"}
-                />
-                
+                /> */}
+                <h1 key={item._id}>{item.front}</h1>
               </div>
             ))}
           />
