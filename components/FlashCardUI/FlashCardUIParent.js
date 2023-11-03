@@ -11,8 +11,11 @@ import EditIcon from '@mui/icons-material/Edit';
 import { FlashCardContextProvider, FlashCardContext } from '@components/Contexts/FlashCardContext';
 import { useRouter } from 'next/navigation';
 import Image from "next/image"
+import PhotoPreviewDialog from './PhotoPreviewDialog';
+import CollectionImage from './CollectionImage';
 
 const FlashCardUIParent = (props) => {
+    const testImage = "https://images.unsplash.com/photo-1557750255-c76072a7aad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHw3fHx2aWV0bmFtfGVufDB8fHx8MTY5ODI5ODc4OXww&ixlib=rb-4.0.3&q=80&w=200"
     const router = useRouter();
     const [flashCardItems, setFlashCardItems] = useState([]);
     const collectionID = props.collectionID
@@ -65,14 +68,20 @@ const FlashCardUIParent = (props) => {
         //setFlashCardItems(data)
         updateFlashCards(data)
     }
-  
-  
+   const [croppedArea, setCroppedArea] = useState(null);
+
+   function setCroppedAreaData(data) {
+        console.log("Set crop data in UI Parent");
+        console.log(data);
+        //data ? setCroppedAreaData(data) : null
+   }
   
     return (
     <div style={{
         display: "flex", 
         width: "100%"
     }}>
+    <PhotoPreviewDialog testImage={testImage} setCroppedAreaData={setCroppedAreaData} />
         <div style={{
             flex: 1,
             backgroundColor: "transparent",
@@ -92,12 +101,13 @@ const FlashCardUIParent = (props) => {
             
 
                 <Image 
-                    src="https://images.unsplash.com/photo-1557750255-c76072a7aad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHw3fHx2aWV0bmFtfGVufDB8fHx8MTY5ODI5ODc4OXww&ixlib=rb-4.0.3&q=80&w=200" // Replace with the actual path to your image
+                    src={testImage}
                     alt="Your Image"
                     width={150} // Set the desired width
                     height={150} // Set the desired height
                     layout="responsive" // Maintain aspect ratio
                 />
+                { croppedArea ? <CollectionImage croppedArea={croppedArea} /> : null}
              </div> 
             <h1 className='centered-heading'>{collection.name}</h1> 
             <h1 className='centered-heading'>{collection.description}</h1>
