@@ -21,6 +21,7 @@ const FlashCardUIParent = (props) => {
     const collectionID = props.collectionID
     //const [collection, setCollection] = useState({});
     const [practiceModeOff , setPracticeModeOff] = useState(true);
+    const [croppedArea, setCroppedArea] = useState(null);
     const { flashCards, updateFlashCards, collection, updateCollection  } = useContext(FlashCardContext);
     const actions = [
         // { icon: <Link href={`/desk/${collectionID}`}><ViewCarouselIcon /></Link>, name: 'Review Flashcards' },
@@ -68,12 +69,13 @@ const FlashCardUIParent = (props) => {
         //setFlashCardItems(data)
         updateFlashCards(data)
     }
-   const [croppedArea, setCroppedArea] = useState(null);
+   
 
    function setCroppedAreaData(data) {
         console.log("Set crop data in UI Parent");
         console.log(data);
         //data ? setCroppedAreaData(data) : null
+        setCroppedArea(data)
    }
   
     return (

@@ -27,6 +27,7 @@ export default function PhotoPreviewDialog(props) {
     setOpen(true);
   };
   const handleClose = () => {
+    props.setCroppedAreaData(croppedAreaData)
     setOpen(false);
   };
 
@@ -41,8 +42,10 @@ export default function PhotoPreviewDialog(props) {
 
   const onCropComplete = (croppedArea, croppedAreaPixels) => {
     console.log(croppedArea, croppedAreaPixels)
-    props.setCroppedAreaData(croppedArea)
+    
     setCroppedAreaData(croppedArea)
+    console.log(croppedAreaData);
+    
   }
 
   return (

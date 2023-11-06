@@ -27,7 +27,7 @@ const CollectionImage = ({ croppedArea }) => {
       className="output"
       style={{ paddingBottom: `${100 / CROP_AREA_ASPECT}%`, borderRadius:"50%" }}
     >
-      <Image src={testImage} alt="" style={imageStyle} />
+      <Image src={testImage} alt="" style={imageStyle} width={100} height={100}/>
     </div>
     )
 }
