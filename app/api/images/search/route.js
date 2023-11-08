@@ -8,15 +8,17 @@ export const GET = async (req,res) => {
     const searchQuery = urlQuery.searchParams.get("query")
     console.log(searchQuery);
     
-    
+    const testENV = process.env.TEST_ENV;
+    console.log(testENV);
      
      const test = "alaska"
      const unsplashID = process.env.UNSPLASH_ID;
-     //console.log(pageTitle);
-     //const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=test`;
-     //const url = "https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=alaska"
+     const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
+   
 
-     const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=${searchQuery}`
+     const url2 = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o&query=${searchQuery}`
+     const url3 = `https://api.unsplash.com/search/photos?client_id=${unsplashID}&query=${searchQuery}`
+     const url = `https://api.unsplash.com/search/photos?client_id=${unsplashAccessKey}&query=${searchQuery}`
 
      //const url = `https://api.unsplash.com/search/photos?client_id=lDmCcc5OFUPJY133A1a9r91wF7mtzk-4JuOEhdIE7-o`
      console.log("pizza time");

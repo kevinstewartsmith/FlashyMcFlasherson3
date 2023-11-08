@@ -46,7 +46,7 @@ const CollectionImage = ({  collectionImg, croppedImage }) => {
     };
   
     const imageStyle = {
-      transform: `translate3d(${transform.x}, ${transform.y}, 0) scale3d(${transform.scale},${transform.scale},1)`,
+      //transform: `translate3d(${transform.x}, ${transform.y}, 0) scale3d(${transform.scale},${transform.scale},1)`,
       width: transform.width,
       height: transform.height,
     };
@@ -54,11 +54,36 @@ const CollectionImage = ({  collectionImg, croppedImage }) => {
     return (
     <div
       className="output"
-      style={{ paddingBottom: `${100 / CROP_AREA_ASPECT}%`, borderRadius:"50%" }}
+      style={{ 
+        //paddingBottom: `${100 / CROP_AREA_ASPECT}%`, 
+        //backgroundColor:"orange",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: "200px",
+        width: "200px",
+      }}
     >
-    Cropped Image top
-      <Image src={croppedImage.image} alt="" style={imageStyle} width={100} height={100}/>
-      Cropped Image bottom
+    
+    <div style={{     
+        position: 'relative',
+        flex: 1,
+        padding: 0,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: "50%",
+        overflow: "hidden"
+        }}
+    >
+        <Image src={croppedImage.image} alt="" style={imageStyle} width={3000} height={3000} 
+        //layout='responsive' 
+
+        />
+        {/* <img src={croppedImage.image} alt="" style={{maxWidth:"100%", maxHeight:"100%"}}/> */}
+    </div>
+      
+    
     </div>
     )
 }
