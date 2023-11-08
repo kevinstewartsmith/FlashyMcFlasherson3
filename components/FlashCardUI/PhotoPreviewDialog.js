@@ -22,18 +22,24 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 
 export default function PhotoPreviewDialog(props) {
   const [open, setOpen] = useState(false);
+  const [crop, setCrop] = useState({ x: 0, y: 0 })
+  const [zoom, setZoom] = useState(1)
+  const [croppedAreaPixelsData, setCroppedAreaPixelsData] = useState(null)
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
-    props.setCroppedAreaData(croppedAreaData)
+    //props.setCroppedAreaPixels(croppedAreaPixelsData)
+    
     setOpen(false);
+    console.log("croppedAreaPixelsData");
+    console.log(croppedAreaPixelsData);
+    //props.setCroppedArea(croppedAreaPixelsData)
+    props.showCroppedImage(croppedAreaPixelsData)
   };
 
-  const [crop, setCrop] = useState({ x: 0, y: 0 })
-  const [zoom, setZoom] = useState(1)
-  const [croppedAreaData, setCroppedAreaData] = useState(null)
+
 
 //   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
 //     console.log(croppedArea, croppedAreaPixels)
@@ -43,8 +49,8 @@ export default function PhotoPreviewDialog(props) {
   const onCropComplete = (croppedArea, croppedAreaPixels) => {
     console.log(croppedArea, croppedAreaPixels)
     
-    setCroppedAreaData(croppedArea)
-    console.log(croppedAreaData);
+    setCroppedAreaPixelsData(croppedAreaPixels)
+    console.log(croppedAreaPixels);
     
   }
 
@@ -75,7 +81,7 @@ export default function PhotoPreviewDialog(props) {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-        <h1>{croppedAreaData ? croppedAreaData.x : "shit"}</h1>
+        <h1>{croppedAreaPixelsData ? croppedAreaPixelsData.x : "no crop data"}</h1>
         
         <div style={{ position: 'relative', width: "500px", height:"500px" }}>
             <Cropper
