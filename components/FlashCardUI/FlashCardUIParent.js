@@ -36,7 +36,6 @@ const FlashCardUIParent = (props) => {
 
     function editClicked() {
         console.log("Edit Mode Clicked");
-
     }
 
     function reviewFCClicked() {
