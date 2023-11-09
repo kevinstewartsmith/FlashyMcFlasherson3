@@ -21,18 +21,19 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function PhotoPreviewDialog(props) {
-  const [open, setOpen] = useState(false);
+  //const [open, setOpen] = useState(false);
   const [crop, setCrop] = useState({ x: 0, y: 0 })
   const [zoom, setZoom] = useState(1)
   const [croppedAreaPixelsData, setCroppedAreaPixelsData] = useState(null)
 
   const handleClickOpen = () => {
-    setOpen(true);
+    props.setOpen(true);
   };
   const handleClose = () => {
     //props.setCroppedAreaPixels(croppedAreaPixelsData)
     
-    setOpen(false);
+    props.setOpen(false);
+    //props.clickPhotoPreviewOpen()
     console.log("croppedAreaPixelsData");
     console.log(croppedAreaPixelsData);
     //props.setCroppedArea(croppedAreaPixelsData)
@@ -62,7 +63,7 @@ export default function PhotoPreviewDialog(props) {
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
-        open={open}
+        open={props.open}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
          Customize Photo

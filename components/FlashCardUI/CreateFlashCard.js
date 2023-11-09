@@ -79,7 +79,7 @@ const CreateFlashCard = (props) => {
         //   }
     }
     return (
-        <div>  
+        <div style={{ width: "100px" }}>  
         <form className="create-note">
           <input
             name={"front"}

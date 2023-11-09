@@ -14,8 +14,10 @@ import Image from "next/image"
 import PhotoPreviewDialog from './PhotoPreviewDialog';
 import CollectionImage from './CollectionImage';
 import getCroppedImg from "@utils/cropImage"
+import CropOriginalIcon from '@mui/icons-material/CropOriginal';
 
 const FlashCardUIParent = (props) => {
+    const [photoPreviewOpen, setPhotoPreviewOpen] = useState(false)
     //const testImage = "https://images.unsplash.com/photo-1557750255-c76072a7aad1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHw3fHx2aWV0bmFtfGVufDB8fHx8MTY5ODI5ODc4OXww&ixlib=rb-4.0.3&q=80&w=200"
     const testImage = "https://images.unsplash.com/photo-1583417319070-4a69db38a482?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MTM4MzV8MHwxfHNlYXJjaHwyfHx2aWV0bmFtfGVufDB8fHx8MTY5OTQ0ODgwNnww&ixlib=rb-4.0.3&q=85"
     const router = useRouter();
@@ -26,6 +28,7 @@ const FlashCardUIParent = (props) => {
     const [croppedArea, setCroppedArea] = useState(null);
     const { flashCards, updateFlashCards, collection, updateCollection  } = useContext(FlashCardContext);
     const [croppedImage, setCroppedImage] = useState(null)//useState({image:null, crop: null})
+    const [open, setOpen] = useState(false);
     const actions = [
         // { icon: <Link href={`/desk/${collectionID}`}><ViewCarouselIcon /></Link>, name: 'Review Flashcards' },
         { icon: <ViewCarouselIcon onClick={togglePracticeMode} />, name: 'Review Flashcards', click: reviewFCClicked },
@@ -88,7 +91,10 @@ const FlashCardUIParent = (props) => {
         }
       }
 
-
+      function clickPhotoPreviewOpen() {
+        setPhotoPreviewOpen(!photoPreviewOpen)
+        setOpen(!open)
+    }
 
   
     return (
@@ -124,22 +130,19 @@ const FlashCardUIParent = (props) => {
                 /> */}
                 {/* { croppedArea ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage}/> : <h1>no image info</h1>} */}
                 {/* { croppedArea ? <h1>yes image info</h1> : <h1>no image info</h1>} */}
-                { croppedImage ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage} croppedImage={croppedImage}/> : "Well I'm Outta Ideas"}
+                { croppedImage ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage} croppedImage={croppedImage} setOpen={{setOpen}}/> : "Well I'm Outta Ideas"}
                 {/* <h1>{croppedImage ? JSON.stringify(croppedArea): "NOPE!"}</h1> */}
              </div> 
             <h1 className='centered-heading'>{collection.name}</h1> 
             <h1 className='centered-heading'>{collection.description}</h1>
-            <PhotoPreviewDialog testImage={testImage} setCroppedArea={setCroppedArea} showCroppedImage={showCroppedImage} />
-        </div>
-        <div style={{
-                border: "1px solid transparent",
-                //marginLeft: "20vw",
-                flex: 4, /* Make the right div take up 4 times the space of the left div */
-                backgroundColor: "transparent", /* Add background color for demonstration */
-                width: "80vw", /* Set the right div to 80% of viewport width */
-                padding: "10px" 
-        }}>  
-            {/* { croppedImage ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage} croppedImage={croppedImage}/> : "Well I'm Outta Ideas"} */}
+            <PhotoPreviewDialog 
+                testImage={testImage} 
+                setCroppedArea={setCroppedArea} 
+                showCroppedImage={showCroppedImage} 
+                clickPhotoPreviewOpen={clickPhotoPreviewOpen} 
+                open={open}
+                setOpen={setOpen}
+                />
             <CreateFlashCard 
                 collectionID={props.collectionID} 
                 //onAdd={collectionChanged}
@@ -152,6 +155,29 @@ const FlashCardUIParent = (props) => {
                 //selectedCollection={props.selectedCollection} 
                 //collectionChanged={collectionChanged}
             />
+
+        </div>
+        <div style={{
+                border: "1px solid transparent",
+                //marginLeft: "20vw",
+                flex: 4, /* Make the right div take up 4 times the space of the left div */
+                backgroundColor: "transparent", /* Add background color for demonstration */
+                width: "80vw", /* Set the right div to 80% of viewport width */
+                padding: "10px" 
+        }}>  
+            {/* { croppedImage ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage} croppedImage={croppedImage}/> : "Well I'm Outta Ideas"} */}
+            {/* <CreateFlashCard 
+                collectionID={props.collectionID} 
+                //onAdd={collectionChanged}
+                inputType={"flashcard"}
+                topPlaceholder={"Add Flashcard Front"}
+                bottomPlaceholder={"Add Flashcard Back"}
+                topName={"front"}
+                bottomName={"back"}
+                //selectedCollection={selectedCollection}
+                //selectedCollection={props.selectedCollection} 
+                //collectionChanged={collectionChanged}
+            /> */}
             <FlashCardFeed collectionID={props.collectionID} flashCardItems={flashCards} />
             <SpeedDial
                 ariaLabel="SpeedDial basic example"

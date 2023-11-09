@@ -44,7 +44,7 @@ function Header() {
 
 
        {/* Desktop navigation */}
-       <div className="sm:flex hidden">
+       <div className="sm:flex hidden" style={{ marginRight:"10px" }}>
                 {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
 

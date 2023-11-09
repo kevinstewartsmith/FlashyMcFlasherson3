@@ -6,7 +6,9 @@ import FlashCard from './FlashCard'
 const FlashCardList = ({data}) => {
     
     return (
-        <div className='collection-feed'> 
+        <div 
+            //className='collection-feed' 
+            style={{ width:"100%", overflow:"auto" }}> 
             {/* <Grid
                 container
                 //rowSpacing={1}
@@ -31,13 +33,13 @@ const FlashCardList = ({data}) => {
             <Grid
                 container
                 //rowSpacing={1}
-                spacing={5}
+                spacing={0}
                 //columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                 justify="space-evenly"
                 alignItems="center"
             >
                 { data.map((flashCard,idx) => (
-                    <Grid item padding={1} xs={4} key={idx}>
+                    <Grid item padding={0} xs={4} key={idx}>
                         <FlashCard 
                             key={flashCard._id}
                             id={flashCard._id}

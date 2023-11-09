@@ -277,7 +277,7 @@ nav h1 {
 
 form.create-note {
   position: relative;
-  width: 480px;
+  width: 100%;
   margin: 30px auto 50px auto;
   background: #fff;
   padding: 25px;
@@ -310,7 +310,7 @@ form.create-note button {
 }
 form.create-note {
   position: relative;
-  width: 480px;
+  width: 230px;
   margin: 30px auto 70px auto;
   background: #fff;
   padding: 15px;
@@ -319,7 +319,7 @@ form.create-note {
 }
 form.create-note input,
 form.create-note textarea {
-  width: 100%;
+  width: 200px;
   border: none;
   padding: 4px;
   outline: none;
