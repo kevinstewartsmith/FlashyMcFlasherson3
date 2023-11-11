@@ -7,7 +7,6 @@ import Zoom from "@mui/material/Zoom";
 import Alert from '@mui/material/Alert';
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-//import globals from styles folder
 import "@styles/globals.css";
 
 
@@ -43,9 +42,7 @@ const CreateFlashCard = (props) => {
         console.log(flashCardData);
       }
 
-    //   useEffect(() => {
-    //     console.log(flashCardData);
-    // }, [handleInputText,flashCardData])
+
     
       const submitNote = async (event) => {
         const front = flashCardData.front
@@ -74,9 +71,7 @@ const CreateFlashCard = (props) => {
           } catch (error) {
             console.log(error);
           } 
-        //   finally {
-        //     //toggleTrigger()
-        //   }
+
     }
     return (
         <div style={{ width: "100px" }}>  

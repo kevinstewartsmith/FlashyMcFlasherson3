@@ -7,9 +7,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
 import Cropper from 'react-easy-crop'
-import Image from 'next/image';
+//import tab header
+import TabHeader from '@components/PhotoSelector/TabHeader';
+
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -30,36 +32,17 @@ export default function PhotoPreviewDialog(props) {
     props.setOpen(true);
   };
   const handleClose = () => {
-    //props.setCroppedAreaPixels(croppedAreaPixelsData)
-    
     props.setOpen(false);
-    //props.clickPhotoPreviewOpen()
-    console.log("croppedAreaPixelsData");
-    console.log(croppedAreaPixelsData);
-    //props.setCroppedArea(croppedAreaPixelsData)
     props.showCroppedImage(croppedAreaPixelsData)
   };
 
-
-
-//   const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-//     console.log(croppedArea, croppedAreaPixels)
-//     props.setCroppedAreaData(croppedArea)
-//   }, [])
-
-  const onCropComplete = (croppedArea, croppedAreaPixels) => {
-    console.log(croppedArea, croppedAreaPixels)
-    
-    setCroppedAreaPixelsData(croppedAreaPixels)
-    console.log(croppedAreaPixels);
-    
-  }
+  const onCropComplete = (croppedArea, croppedAreaPixels) => { setCroppedAreaPixelsData(croppedAreaPixels) }
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open dialog
-      </Button>
+      </Button> */}
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -67,6 +50,7 @@ export default function PhotoPreviewDialog(props) {
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
          Customize Photo
+         <TabHeader />
         </DialogTitle>
        
         <IconButton
@@ -82,22 +66,20 @@ export default function PhotoPreviewDialog(props) {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-        <h1>{croppedAreaPixelsData ? croppedAreaPixelsData.x : "no crop data"}</h1>
-        
-        <div style={{ position: 'relative', width: "500px", height:"500px" }}>
+          <h1>{croppedAreaPixelsData ? croppedAreaPixelsData.x : "no crop data"}</h1>
+          
+          <div style={{ position: 'relative', width: "500px", height:"500px" }}>
             <Cropper
-                image={props.testImage}
-                crop={crop}
-                zoom={zoom}
-                aspect={4 / 4}
-                onCropChange={setCrop}
-                onCropComplete={onCropComplete}
-                onZoomChange={setZoom}
-                cropSize={{width: 400, height: 400}}
+              image={props.testImage}
+              crop={crop}
+              zoom={zoom}
+              aspect={4 / 4}
+              onCropChange={setCrop}
+              onCropComplete={onCropComplete}
+              onZoomChange={setZoom}
+              cropSize={{width: 400, height: 400}}
             />
-        </div>
-    
-
+          </div>
         </DialogContent>
         
         <DialogActions>
