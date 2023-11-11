@@ -92,8 +92,9 @@ const FlashCardUIParent = (props) => {
       }
 
       function clickPhotoPreviewOpen() {
-        setPhotoPreviewOpen(!photoPreviewOpen)
+        //setPhotoPreviewOpen(!photoPreviewOpen)
         setOpen(!open)
+        console.log("Photo Preview Open");
     }
 
   
@@ -130,16 +131,25 @@ const FlashCardUIParent = (props) => {
                 /> */}
                 {/* { croppedArea ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage}/> : <h1>no image info</h1>} */}
                 {/* { croppedArea ? <h1>yes image info</h1> : <h1>no image info</h1>} */}
-                { croppedImage ? <CollectionImage croppedArea={croppedArea} collectionImg={testImage} croppedImage={croppedImage} setOpen={{setOpen}}/> : "Well I'm Outta Ideas"}
+                { croppedImage ? 
+                    <CollectionImage 
+                        croppedArea={croppedArea} 
+                        collectionImg={testImage} 
+                        croppedImage={croppedImage} 
+                        setOpen={{setOpen}} 
+                        clickPhotoPreviewOpen={clickPhotoPreviewOpen}
+
+                    /> : "Well I'm Outta Ideas"}
                 {/* <h1>{croppedImage ? JSON.stringify(croppedArea): "NOPE!"}</h1> */}
              </div> 
             <h1 className='centered-heading'>{collection.name}</h1> 
             <h1 className='centered-heading'>{collection.description}</h1>
+            <h1>{open}</h1>
             <PhotoPreviewDialog 
                 testImage={testImage} 
                 setCroppedArea={setCroppedArea} 
                 showCroppedImage={showCroppedImage} 
-                clickPhotoPreviewOpen={clickPhotoPreviewOpen} 
+                 
                 open={open}
                 setOpen={setOpen}
                 />

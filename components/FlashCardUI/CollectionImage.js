@@ -63,7 +63,8 @@ const CollectionImage = ({  collectionImg, croppedImage, clickPhotoPreviewOpen, 
         setHovered(false)
     }
     function handleOpen() {
-      setOpen(true)
+      //setOpen(true)
+      clickPhotoPreviewOpen()
     }
 
 
@@ -103,12 +104,9 @@ const CollectionImage = ({  collectionImg, croppedImage, clickPhotoPreviewOpen, 
         { hovered ?
         <IconButton 
           //onClick={showCroppedImage}
-          onClick={handleOpen}
+          onClick={clickPhotoPreviewOpen}
           style={{
               position: "absolute", 
-              
-              //fontSize: "10px", 
-              
               zIndex: 2,
               opacity: 0.5,
           }}
