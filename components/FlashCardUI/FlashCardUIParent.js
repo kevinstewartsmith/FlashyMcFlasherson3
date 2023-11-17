@@ -13,6 +13,8 @@ import PhotoPreviewDialog from './PhotoPreviewDialog';
 import CollectionImageSelector from './CollectionImageSelector';
 import getCroppedImg from "@utils/cropImage"
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
+//import provider for cropped area
+import { CollectionPhotoCropContext } from '@components/Contexts/CollectionPhotoCropContext'
 
 const FlashCardUIParent = (props) => {
     const [photoPreviewOpen, setPhotoPreviewOpen] = useState(false)
@@ -126,6 +128,7 @@ const FlashCardUIParent = (props) => {
 
                     /> 
                 : "Well I'm Outta Ideas"} */}
+               
                 <CollectionImageSelector 
                         croppedArea={croppedArea} 
                         collectionImg={testImage} 
@@ -139,6 +142,7 @@ const FlashCardUIParent = (props) => {
                         setOpen={setOpen}
 
                     /> 
+                
                 
              </div> 
             <h1 className='centered-heading'>{collection.name}</h1> 

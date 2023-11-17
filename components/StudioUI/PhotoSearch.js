@@ -57,7 +57,15 @@ const PhotoSearch = (props) => {
     }
 
     return (
-        <div>
+        <div 
+            className="photo-search" 
+            style={{ 
+                maxHeight: "50vh", 
+                backgroundColor:"gray", 
+                borderWidth:"3px", 
+                borderColor:"yellow" 
+            }}
+        >
         {/* //Component Start */}                            
             <TextField
                 variant="outlined"

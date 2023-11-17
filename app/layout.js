@@ -5,6 +5,7 @@ import Provider from '@components/Provider'
 import { Suspense } from 'react'
 import { FlashCardContextProvider } from '@components/Contexts/FlashCardContext'
 import { ContextProvider } from "@components/Contexts/CollectionContext"
+import { CollectionPhotoCropContextProvider } from '@components/Contexts/CollectionPhotoCropContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,10 +21,12 @@ export default function RootLayout({ children }) {
         <Provider> 
         <ContextProvider >
         <FlashCardContextProvider>
+        <CollectionPhotoCropContextProvider>
           <Nav />
           <Suspense fallback={<div>Loading...</div>}>
           {children}
           </Suspense>
+          </CollectionPhotoCropContextProvider>
           </FlashCardContextProvider>
           </ContextProvider>
         </Provider>

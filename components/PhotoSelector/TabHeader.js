@@ -5,6 +5,9 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import Cropper from 'react-easy-crop';
+import PhotoSearch from '@components/StudioUI/PhotoSearch';
+import PhotoCropper from './PhotoCropper';
+import { CollectionPhotoCropContextProvider } from '@components/Contexts/CollectionPhotoCropContext';
 
 const TabHeader = (props) => {
   
@@ -24,22 +27,44 @@ const TabHeader = (props) => {
             </TabList>
             </Box>
             <TabPanel value="1">
-                {/* <h1>{props.croppedAreaPixelsData ? props.croppedAreaPixelsData.x : "no crop data"}</h1> */}
-{/*           
+                {/* <h1>{props.croppedAreaPixelsData ? props.croppedAreaPixelsData.x : "no crop data"}</h1>
+          
                 <div style={{ position: 'relative', width: "500px", height:"500px" }}>
                     <Cropper
-                        image={props.testImage}
-                        crop={crop}
-                        zoom={zoom}
+                        image={props.image}
+                        crop={props.crop}
+                        zoom={props.zoom}
                         aspect={4 / 4}
-                        onCropChange={setCrop}
-                        onCropComplete={onCropComplete}
-                        onZoomChange={setZoom}
+                        onCropChange={props.setCrop}
+                        onCropComplete={props.onCropComplete}
+                        onZoomChange={props.setZoom}
                         cropSize={{width: 400, height: 400}}
                     />
                 </div> */}
+                <PhotoCropper
+                    testImage={props.image}
+                    //crop={props.crop}
+                    //zoom={props.zoom}
+                    //aspect={4 / 4}
+                    // onCropChange={props.setCrop}
+                    // onCropComplete={props.onCropComplete}
+                    // onZoomChange={props.setZoom}
+                    // cropSize={{width: 400, height: 400}}
+                    // setCroppedAreaPixelsData={props.setCroppedAreaPixelsData}
+                    croppedAreaPixelsData={props.croppedAreaPixelsData}
+                    setCroppedAreaPixelsData={props.setCroppedAreaPixelsData}
+                    handleClose={props.handleClose}
+                    image={props.image}
+
+                />
             </TabPanel>
-            <TabPanel value="2">Search Photos</TabPanel>
+            <TabPanel value="2">
+                {/* <div style={{ height: "100%", width: "90%", borderColor:"yellow", borderWidth:"5px", backgroundColor:"green"}}> */}
+                
+                    <PhotoSearch />
+                
+                {/* </div> */}
+            </TabPanel>
             
         </TabContext>
         </Box>
