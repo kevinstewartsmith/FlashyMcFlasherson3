@@ -36,6 +36,11 @@ export default function PhotoPreviewDialog(props) {
     props.setOpen(false);
     props.showCroppedImage(croppedAreaPixelsData)
   };
+  const [tabValue, setTabValue] = useState('1');
+  
+  const handleTabChangeChange = (event, newValue) => {
+      setValue(newValue);
+  }
 
   //const onCropComplete = () => (croppedArea, croppedAreaPixels) => { setCroppedAreaPixelsData(croppedAreaPixels) }
 
@@ -93,14 +98,21 @@ export default function PhotoPreviewDialog(props) {
             setCroppedAreaPixelsData={setCroppedAreaPixelsData}
             handleClose={handleClose}
             image={props.testImage}
+            setTabValue={setTabValue}
+            tabValue={tabValue}
           
          />
         </DialogContent>
         
         <DialogActions>
+        { tabValue === '1' ?
+        
           <Button autoFocus onClick={handleClose}>
             Save changes
-          </Button>
+          </Button> :
+          <Button autoFocus onClick={handleClose}>
+            Choose Image
+          </Button> }
         </DialogActions>
       </BootstrapDialog>
     </div>

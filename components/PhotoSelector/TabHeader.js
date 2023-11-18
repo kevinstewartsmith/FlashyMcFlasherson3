@@ -12,14 +12,16 @@ import { CollectionPhotoCropContextProvider } from '@components/Contexts/Collect
 const TabHeader = (props) => {
   
     const [value, setValue] = useState('1');
+    const [selectedImageData, setSelectedImageData] = useState(null);
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        //setValue(newValue);
+        props.setTabValue(newValue)
     }
 
     return (
         <Box sx={{ width: '100%', typography: 'body1' }}>
-        <TabContext value={value}>
+        <TabContext value={props.tabValue}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
                 <Tab label="Customize Photo" value="1" />
@@ -54,14 +56,14 @@ const TabHeader = (props) => {
                     croppedAreaPixelsData={props.croppedAreaPixelsData}
                     setCroppedAreaPixelsData={props.setCroppedAreaPixelsData}
                     handleClose={props.handleClose}
-                    image={props.image}
+                    image={selectedImageData ? selectedImageData: props.image}
 
                 />
             </TabPanel>
             <TabPanel value="2">
                 {/* <div style={{ height: "100%", width: "90%", borderColor:"yellow", borderWidth:"5px", backgroundColor:"green"}}> */}
                 
-                    <PhotoSearch />
+                    <PhotoSearch setSelectedImageData={setSelectedImageData}/>
                 
                 {/* </div> */}
             </TabPanel>

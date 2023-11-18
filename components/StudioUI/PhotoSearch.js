@@ -12,6 +12,7 @@ const PhotoSearch = (props) => {
     
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
+    //const [selectedImageData, setSelectedImageData] = useState(null);
 
     const photoGalleryAnimation = useSpring({
         from: {
@@ -50,11 +51,21 @@ const PhotoSearch = (props) => {
 
         const data = await response.json();
         
-        console.log(data.results[0].urls.thumb);
+        //console.log(data.results[0].urls.thumb);
         console.log(typeof data.results);
+        console.log(data.results);
         setPhotoSearchResults(data.results)
 
     }
+
+    
+    function imageClicked(idx) {
+        // Retrieve the data of the clicked image using the idx
+        const selectedImage = photoSearchResults[idx];
+        console.log("Image clicked2:", selectedImage);
+        props.setSelectedImageData(selectedImage.urls.regular);
+    }
+   
 
     return (
         <div 
@@ -102,12 +113,15 @@ const PhotoSearch = (props) => {
                             
                             
                                 
-                                <div key={idx}>
+                                <div key={idx} onClick={() => imageClicked(idx)}>
                                 <Image
+                                    //key={idx}
                                     src={photo.urls.thumb}
                                     alt="Picture of the author"
                                     width={100}
-                                    height={100}        
+                                    height={100}
+                                    //onClick={imageClicked}
+                                    data-src={photo}        
                                 />
                                 </div>
                            
