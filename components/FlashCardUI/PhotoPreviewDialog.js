@@ -36,6 +36,12 @@ export default function PhotoPreviewDialog(props) {
     props.setOpen(false);
     props.showCroppedImage(croppedAreaPixelsData)
   };
+
+  const chooseImageClicked = () => {
+    console.log("Choose Image Clicked");
+    setTabValue('1')
+  }
+
   const [tabValue, setTabValue] = useState('1');
   
   const handleTabChangeChange = (event, newValue) => {
@@ -110,7 +116,7 @@ export default function PhotoPreviewDialog(props) {
           <Button autoFocus onClick={handleClose}>
             Save changes
           </Button> :
-          <Button autoFocus onClick={handleClose}>
+          <Button autoFocus onClick={chooseImageClicked}>
             Choose Image
           </Button> }
         </DialogActions>

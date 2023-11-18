@@ -165,12 +165,12 @@ const CollectionImageSelector = ({ collectionImg }) => {
         : <CroppedImagePlaceholder handleOpenPreview={handleOpenPreview} />}
 
         <PhotoPreviewDialog 
-        testImage={testImage} 
-        //setCroppedArea={setCroppedArea} 
-        showCroppedImage={showCroppedImage} 
-        open={open}
-        setOpen={setOpen}
-      />
+          testImage={testImage} 
+          //setCroppedArea={setCroppedArea} 
+          showCroppedImage={showCroppedImage} 
+          open={open}
+          setOpen={setOpen}
+        />
 
 
     </div>

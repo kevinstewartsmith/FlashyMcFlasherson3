@@ -1,4 +1,4 @@
-import React from 'react'
+import {useContext} from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { useSpring, animated } from "react-spring";
 import TextField from '@mui/material/TextField';
@@ -7,12 +7,14 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Image from "next/image";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
+import { CollectionPhotoCropContext } from '@components/Contexts/CollectionPhotoCropContext'
 
 const PhotoSearch = (props) => {
     
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
     //const [selectedImageData, setSelectedImageData] = useState(null);
+    const { selectedImageData, setSelectedImageData } = useContext(CollectionPhotoCropContext)
 
     const photoGalleryAnimation = useSpring({
         from: {
@@ -63,7 +65,7 @@ const PhotoSearch = (props) => {
         // Retrieve the data of the clicked image using the idx
         const selectedImage = photoSearchResults[idx];
         console.log("Image clicked2:", selectedImage);
-        props.setSelectedImageData(selectedImage.urls.regular);
+        setSelectedImageData(selectedImage.urls);
     }
    
 

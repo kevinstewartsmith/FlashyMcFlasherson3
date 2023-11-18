@@ -24,7 +24,7 @@ const TabHeader = (props) => {
         <TabContext value={props.tabValue}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-                <Tab label="Customize Photo" value="1" />
+                <Tab label="Crop Photo" value="1" />
                 <Tab label="Search Photos" value="2" />
             </TabList>
             </Box>
