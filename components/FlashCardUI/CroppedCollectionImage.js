@@ -14,31 +14,6 @@ const CroppedCollectionImage = ({ collectionImage, croppedImage, hovered, open, 
     //const scale = 100 / croppedArea.width;
     const scale = 100 / croppedImage.crop.width
     const croppedArea = croppedImage.crop 
-    
-    
-    console.log("Scale");
-    console.log(scale);    
-    console.log("Image");
-    console.log(croppedImage ? croppedImage.image : null);
-    // const showCroppedImage = async () => {
-    //     try {
-    //       const croppedImage = await getCroppedImg(
-    //         collectionImg,
-    //         //dogImg,
-    //         croppedArea,
-    //         0
-    //         //rotation
-    //       )
-    //       console.log('donee', { croppedImage })
-    //       setCroppedImage(croppedImage)
-    //     } catch (e) {
-    //       console.error(e)
-    //     }
-    //   }
-    //   showCroppedImage()
-
-    //if cropped ar
-
     const transform = {
       x: `${-croppedArea.x * scale}%`,
       y: `${-croppedArea.y * scale}%`,
@@ -62,23 +37,6 @@ const CroppedCollectionImage = ({ collectionImage, croppedImage, hovered, open, 
         setHovered(false)
     }
 
-    // const showCroppedImage = async (croppedImagePixels) => {
-    //     console.log("showCroppedImage pixels");
-    //     console.log(croppedImagePixels);
-    //     try {
-    //       const croppedImage = await getCroppedImg(
-    //         testImage,
-    //         croppedImagePixels,
-    //         0 // rotation
-    //       )
-    //       console.log('donee', { croppedImage })
-    //       setCroppedImage({image: croppedImage, crop: croppedImagePixels})
-    //     } catch (e) {
-    //       console.error(e)
-    //     }
-    // }
-
-
     return (
         <div onClick={handleOpenPreview} style={{ height: "90%", width: "90%"}}>
             { croppedImage ?
@@ -99,16 +57,16 @@ const CroppedCollectionImage = ({ collectionImage, croppedImage, hovered, open, 
                     { hovered ?
                     <IconButton 
                     //onClick={clickPhotoPreviewOpen}
-                    style={{
-                        position: "absolute", 
-                        zIndex: 2,
-                        opacity: 0.5,
-                    }}
+                        style={{
+                            position: "absolute", 
+                            zIndex: 2,
+                            opacity: 0.5,
+                        }}
                     >
                     <CropIcon 
                         style={{
-                        color: "white", 
-                        fontSize: "200px", 
+                            color: "white", 
+                            fontSize: "200px", 
                         }}
                     />
                     </IconButton>

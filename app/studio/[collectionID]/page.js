@@ -6,7 +6,7 @@ import { useState } from "react";
 import Gallery from "@components/StudioUI/Gallery";
 import CloseIcon from '@mui/icons-material/Close';
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
-import { Grid } from "@mui/material";
+import { Grid, Slider } from "@mui/material";
 import BrushIcon from '@mui/icons-material/Brush';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
@@ -29,7 +29,7 @@ const Studio = ({params}) => {
     const [flashCardActiveItem, setFlashCardActiveItem] = useState(null)
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
-    const developerModeOn = true;
+    const developerModeOn = false;
     
     const menuItems = [
         { name: "Themes", icon: <BrushIcon fontSize='large' />, component: <div></div> },
@@ -37,7 +37,10 @@ const Studio = ({params}) => {
         { name: "APIs", icon: <TravelExploreIcon fontSize='large' />, component: <div></div> },
         { name: "Uploads", icon:<UploadFileIcon fontSize='large' />, component: <div></div> }
     ]
-
+    const [sliderValue, setSliderValue] = useState(0);
+    const handleSliderChange = (event, newValue) => {
+        setSliderValue(newValue);   
+    };
     const [open, setOpen] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [shrinkDrawerContainer, setShrinkDrawerContainer] = useState(false);
@@ -50,7 +53,7 @@ const Studio = ({params}) => {
         transform: open ?  "translateX(60px)" :  "translateX(-440px)",
         height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
         backgroundColor: developerModeOn ? "yellow" : "white",
-        config: { duration: 250 }
+        config: { duration: 275 }
        
     })
 
@@ -119,6 +122,31 @@ const Studio = ({params}) => {
         },
         to: {
             height: shrinkDrawerContainer ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
+            config: { duration: 1000 }
+        },
+    });
+
+    const sliderDivAnimation = useSpring({
+        from: {
+            width: "calc(50vw)",
+            //marginLeft: 85,
+            //marginRight: 85,
+            height: "10%",
+            backgroundColor: "transparent",
+            //bottom: "40px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "absolute",
+        },
+        to: {
+            width: open ? "calc(100vw - 480px)" : "calc(50vw - 0px)",
+            //marginLeft: open ? 450 : 65,
+            //height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
+            bottom: galleryOpen ? "200px" : "15px",
+            backgroundColor: developerModeOn ? "lightgreen" : "lightgrey",
+            borderWidth: 10,
+            borderColor: developerModeOn ? "teal" : "lightgrey",
             config: { duration: 1000 }
         },
     });
@@ -283,14 +311,27 @@ const Studio = ({params}) => {
                                 />
                             </div>
                             
-                            <div style={{width: "100%", height: "100%", backgroundColor: "transparent",opacity:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
+                            <div style={{postion:"relative", marginBottom:"80px",width: "100%", height: "100%", backgroundColor: "transparent",opacity:"100%", display:"flex", justifyContent:"center", alignItems:"center"}}>
                                 <div className="studio-canvas-container" >
                                     
                                         <h1>Look at me1!</h1>
-                                        <FlashCard/>
-                                    </div>       
-                                </div>
-                            
+                                        <FlashCard sliderValue={sliderValue} />
+                                        {/* <div style={{ position:"relative", bottom:"80px" }}>bottom</div> */}
+                                </div> 
+                                
+                            </div>
+
+                            <animated.div className="slider-div" style={sliderDivAnimation}>bottom
+                                <h1>{sliderValue}</h1>
+                                <Slider
+                                    value={sliderValue}
+                                    onChange={handleSliderChange}
+                                    aria-labelledby="mui-slider"
+                                    min={0}
+                                    max={100}
+                                    step={1}
+                                />
+                            </animated.div>
                         </animated.div>
                     
                 {/* </animated.div> */}

@@ -37,9 +37,11 @@ export default function FlashCard(props) {
     });
     
 }
+const width = props.sliderValue * 0.01 
+const height = props.sliderValue * 0.00333
 
   return (
-    <div>
+    <div style={{ width:`calc(50vw * ${width})`, height: `calc(50vw * ${height})` }}>
       <div>
         <div className="flash-card note-div">
           <div className="flash" onClick={() => set((state) => !state)}>
