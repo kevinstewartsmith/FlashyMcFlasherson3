@@ -199,8 +199,7 @@ const StudioUIParent = ({params}) => {
                         }}> */}
                         <div style={{ width:"100%", backgroundColor: "green", display:"flex", justifyContent:"center",alignItems:"center" }}>
                    
-                            <div style={{ backgroundColor: "white", height:"30vw", width: "45vw",
-                             }}>
+                            <div style={{ backgroundColor: "blue", height:"30vw", width: "45vw"}}>
                                 <ResizableFlashCard front={"front"} back={"back"}/>
                             </div>
                             

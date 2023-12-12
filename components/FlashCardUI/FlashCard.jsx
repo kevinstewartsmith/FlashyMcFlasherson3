@@ -37,22 +37,26 @@ export default function FlashCard(props) {
     });
     
 }
-const width = props.sliderValue * 0.01 
-const height = props.sliderValue * 0.00333
+const width = props.sliderValue * 0.01 * ((297/2 * 3.78) + (297%2 * 3.78))
+const height = props.sliderValue * 0.01 * ((210/2 * 3.78) + (210%2 * 3.78))
+
+
 
   return (
-    <div style={{ width:`calc(50vw * ${width})`, height: `calc(50vw * ${height})` }}>
-      <div>
-        <div className="flash-card note-div">
-          <div className="flash" onClick={() => set((state) => !state)}>
+    <div style={{ width:width, height: height, backgroundColor:"white" }}>
+      {/* <div> */}
+        <div className="flash-card note-div" style={{  width:width, height: height}}>
+          <div className="flash" onClick={() => set((state) => !state)} style={{  width:width, height: height}}>
 
             <a.div
               className="c front"
-              style={{
+              style={{ 
                 opacity,
                 transform,
                 rotateX: "180deg",
-                borderRadius: 7
+                borderRadius: 7,
+                width: width, 
+                height: height
               }}
             >
               <div className="center">
@@ -64,7 +68,9 @@ const height = props.sliderValue * 0.00333
               style={{
                 opacity: opacity.to((o) => 1 - o),
                 transform,
-                borderRadius: 7
+                borderRadius: 7,
+                width:width, 
+                height: height
               }}
             >
               <div className="center">
@@ -75,7 +81,7 @@ const height = props.sliderValue * 0.00333
           </div>
           <DeleteOutlinedIcon className="delete-button" onClick={deleteFlashCard}/>  
         </div>  
-      </div>
+      {/* </div> */}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import "@styles/globals.css";
 //import react-spring and animated
 import { useSpring, animated } from "react-spring";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Gallery from "@components/StudioUI/Gallery";
 import CloseIcon from '@mui/icons-material/Close';
 import CropOriginalIcon from '@mui/icons-material/CropOriginal';
@@ -22,6 +22,10 @@ import { set } from "mongoose";
 import Image from "next/image";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 import PhotoSearch from "@components/StudioUI/PhotoSearch";
+import StudioSlider from "@components/StudioUI/StudioSlider";
+//Import studio context provider
+import { StudioContext } from '@components/Contexts/StudioContext';
+import { StudioContextProvider } from "@components/Contexts/StudioContext";
 
 
 const Studio = ({params}) => {
@@ -30,14 +34,15 @@ const Studio = ({params}) => {
     const [photoInputValue, setPhotoInputValue] = useState("")
     const [photoSearchResults, setPhotoSearchResults] = useState([])
     const developerModeOn = false;
-    
+    const { sliderValue } = useContext(StudioContext)
+
     const menuItems = [
         { name: "Themes", icon: <BrushIcon fontSize='large' />, component: <div></div> },
         { name: "Photos", icon: <CropOriginalIcon fontSize='large' />, component: <div></div> },
         { name: "APIs", icon: <TravelExploreIcon fontSize='large' />, component: <div></div> },
         { name: "Uploads", icon:<UploadFileIcon fontSize='large' />, component: <div></div> }
     ]
-    const [sliderValue, setSliderValue] = useState(0);
+    //const [sliderValue, setSliderValue] = useState(100);
     const handleSliderChange = (event, newValue) => {
         setSliderValue(newValue);   
     };
@@ -76,14 +81,14 @@ const Studio = ({params}) => {
             width: "calc(100vw - 65px)",
             marginLeft: 65,
             height: "calc(100vh - 50px)",
-            backgroundColor: "transparent",
+            backgroundColor: "light-pink",
         },
         to: {
             width: open ? "calc(100vw - 450px)" : "calc(100vw - 65px)",
             marginLeft: open ? 450 : 65,
             height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
             backgroundColor: developerModeOn ? "yellow" : "lightgrey",
-            borderWidth: 10,
+            borderWidth: 0,
             borderColor: developerModeOn ? "orange" : "lightgrey",
             config: { duration: 1000 }
         },
@@ -107,10 +112,10 @@ const Studio = ({params}) => {
     
     const studioGalleryAnimation = useSpring({
         from: {
-            transform:  "translateY(150px)"
+            transform:  "translateY(200px)"
         },
         to: { 
-            transform: galleryOpen ?  "translateY(0px)" :  "translateY(150px)",
+            transform: galleryOpen ?  "translateY(0px)" :  "translateY(200px)",
             config: { duration: 1000 }
         },
     });
@@ -128,24 +133,27 @@ const Studio = ({params}) => {
 
     const sliderDivAnimation = useSpring({
         from: {
-            width: "calc(50vw)",
+            width: "calc(100vw - 85px)",
             //marginLeft: 85,
             //marginRight: 85,
-            height: "10%",
-            backgroundColor: "transparent",
+            height: "40px",
+            backgroundColor: "white",
             //bottom: "40px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             position: "absolute",
+            borderColor: "black",
+            borderWidth: 1,
+            bottom: "0px",
         },
         to: {
-            width: open ? "calc(100vw - 480px)" : "calc(50vw - 0px)",
+            width: open ? "calc(100vw - 480px)" : "calc(100vw - 85px)",
             //marginLeft: open ? 450 : 65,
             //height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
-            bottom: galleryOpen ? "200px" : "15px",
-            backgroundColor: developerModeOn ? "lightgreen" : "lightgrey",
-            borderWidth: 10,
+            bottom: galleryOpen ? "185px" : "0px",
+            //backgroundColor: developerModeOn ? "lightgreen" : "lightgrey",
+            //borderWidth: 10,
             borderColor: developerModeOn ? "teal" : "lightgrey",
             config: { duration: 1000 }
         },
@@ -193,13 +201,20 @@ const Studio = ({params}) => {
         setPhotoSearchResults(data.results)
 
     }
+    const marks = [
+        
+        { value: 50, label: '50' },
+        { value: 75, label: '75' },
+        { value: 100, label: '100' },
+        { value: 125, label: '125' },
+        { value: 150, label: '150' },
+      ];
  
     return (
+        
         <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor: developerModeOn ? "blue" : "white"}}>
             <div className='studio-sidenav'>
-                {/* NavBar
-                <button onClick={openClicked}>Click me</button> */}
-                {/* <button onClick={galleryOpenClicked}>Open Gallery</button> */}
+
 
                 <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="column" style={{ top:0 }}>
                     { menuItems.map((item, idx) => (
@@ -292,7 +307,7 @@ const Studio = ({params}) => {
                                 height: 50, 
                                 width: 50, 
                                 backgroundColor:"lightblue",
-                                position:"absolute",
+                                position: "absolute",
                                 top: 70,
                                 right: 5,
                                 display: "flex",
@@ -302,8 +317,6 @@ const Studio = ({params}) => {
                                 borderColor: "black",
                                 borderWidth: 1,
                                 
-                                
-
                             }}>
                                 <ViewCarouselIcon 
                                     fontSize='large'
@@ -315,23 +328,13 @@ const Studio = ({params}) => {
                                 <div className="studio-canvas-container" >
                                     
                                         <h1>Look at me1!</h1>
-                                        <FlashCard sliderValue={sliderValue} />
+                                        <FlashCard sliderValue={sliderValue}  front={"front"} back={"back"}/>
                                         {/* <div style={{ position:"relative", bottom:"80px" }}>bottom</div> */}
                                 </div> 
                                 
                             </div>
 
-                            <animated.div className="slider-div" style={sliderDivAnimation}>bottom
-                                <h1>{sliderValue}</h1>
-                                <Slider
-                                    value={sliderValue}
-                                    onChange={handleSliderChange}
-                                    aria-labelledby="mui-slider"
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                />
-                            </animated.div>
+                            <StudioSlider />
                         </animated.div>
                     
                 {/* </animated.div> */}
@@ -340,6 +343,7 @@ const Studio = ({params}) => {
                 </animated.div>
             {/* </div> */}
         </div>
+     
     )
 }
 
