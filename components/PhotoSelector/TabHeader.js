@@ -29,20 +29,7 @@ const TabHeader = (props) => {
             </TabList>
             </Box>
             <TabPanel value="1">
-                {/* <h1>{props.croppedAreaPixelsData ? props.croppedAreaPixelsData.x : "no crop data"}</h1>
-          
-                <div style={{ position: 'relative', width: "500px", height:"500px" }}>
-                    <Cropper
-                        image={props.image}
-                        crop={props.crop}
-                        zoom={props.zoom}
-                        aspect={4 / 4}
-                        onCropChange={props.setCrop}
-                        onCropComplete={props.onCropComplete}
-                        onZoomChange={props.setZoom}
-                        cropSize={{width: 400, height: 400}}
-                    />
-                </div> */}
+
                 <PhotoCropper
                     testImage={props.image}
                     //crop={props.crop}

@@ -34,17 +34,20 @@ const StudioSlider = ({open, galleryOpen, developerModeOn}) => {
             borderColor: "black",
             borderWidth: 1,
             bottom: "0px",
+            left: 40,
+            
         },
         to: {
             width: open ? "calc(100vw - 480px)" : "calc(100vw - 85px)",
             bottom: galleryOpen ? "185px" : "0px",
             borderColor: developerModeOn ? "teal" : "lightgrey",
-            config: { duration: 1000 }
+            config: { duration: 1000 },
+            
         },
     });
     
     return (
-        <div>
+        
             <animated.div className="slider-div" style={sliderDivAnimation}>bottom
                 <h1>{sliderValue}</h1>
                 <Slider
@@ -58,7 +61,7 @@ const StudioSlider = ({open, galleryOpen, developerModeOn}) => {
                     sx={{width: "50%", position: "absolute", bottom: 0}}
                 />
             </animated.div>
-        </div>
+      
     )
 }
 

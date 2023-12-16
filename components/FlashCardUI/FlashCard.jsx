@@ -43,7 +43,7 @@ const height = props.sliderValue * 0.01 * ((210/2 * 3.78) + (210%2 * 3.78))
 
 
   return (
-    <div style={{ width:width, height: height, backgroundColor:"white" }}>
+    <div style={{ width:width, height: height, backgroundColor:"green", display: "flex", justifyContent: "center", alignItems:"center" }}>
       {/* <div> */}
         <div className="flash-card note-div" style={{  width:width, height: height}}>
           <div className="flash" onClick={() => set((state) => !state)} style={{  width:width, height: height}}>

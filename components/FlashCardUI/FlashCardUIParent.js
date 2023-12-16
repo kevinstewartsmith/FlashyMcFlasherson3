@@ -112,22 +112,6 @@ const FlashCardUIParent = (props) => {
                 alignItems: "center",
 
             }}>  
-             
-                {/* { croppedImage ? 
-                    <CollectionImage 
-                        croppedArea={croppedArea} 
-                        collectionImg={testImage} 
-                        croppedImage={croppedImage} 
-                        //setOpen={{setOpen}} 
-                        clickPhotoPreviewOpen={clickPhotoPreviewOpen}
-                        testImage={testImage} 
-                        setCroppedArea={setCroppedArea} 
-                        showCroppedImage={showCroppedImage} 
-                        open={open}
-                        setOpen={setOpen}
-
-                    /> 
-                : "Well I'm Outta Ideas"} */}
                
                 <CollectionImageSelector 
                         croppedArea={croppedArea} 
@@ -148,13 +132,7 @@ const FlashCardUIParent = (props) => {
             <h1 className='centered-heading'>{collection.name}</h1> 
             <h1 className='centered-heading'>{collection.description}</h1>
             <h1>{open}</h1>
-            {/* <PhotoPreviewDialog 
-                testImage={testImage} 
-                setCroppedArea={setCroppedArea} 
-                showCroppedImage={showCroppedImage} 
-                open={open}
-                setOpen={setOpen}
-            /> */}
+
             <CreateFlashCard 
                 collectionID={props.collectionID} 
                 inputType={"flashcard"}

@@ -24,6 +24,8 @@ const Gallery = ({items, collectionID, toggleGallery}) => {
     0: { items: 3 },
     568: { items: 5 },
     1024: { items: 5 },
+    1300: { items: 5 },
+    1700: { items: 7 },
   };
   const [componentCollection, setComponentCollection] = useState([])
   const [componentFlashCards, setComponentFlashCards] = useState([])
@@ -92,13 +94,13 @@ const Gallery = ({items, collectionID, toggleGallery}) => {
 },[newFlashCards, collectionID]);
 
   return (
-    <>
-      <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="row" style={{height: "100%", widows:"100%"}} >
+    
+      <Grid container spacing={0} justify="space-evenly" alignItems="center" direction="row" style={{height: "100%", widows:"100%", borderColor:"green", borderWidth:5}} >
         <Grid item padding={1} xs={0.5} sm={0.5} md={0.5} key={"flash" + 1} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} >
           {/* <button onClick={handlePrevClick}>Prev button</button> */}
           <NavigateBeforeIcon fontSize='large' onClick={handlePrevClick} />
         </Grid>
-        <Grid item padding={1} xs={11} sm={11} md={11} key={"flash" + 2} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} style={{height: "100%"}}>
+        <Grid item padding={1} xs={11} sm={11} md={11} key={"flash" + 2} width={30} justify="space-evenly" display={"flex"} alignItems="center" justifyContent={"center"} style={{height: "100%", backgroundColor:"yellow"}}>
           <AliceCarousel 
             mouseTracking 
             disableDotsControls={true}          
@@ -118,8 +120,8 @@ const Gallery = ({items, collectionID, toggleGallery}) => {
                 onClick={() => setSelectedFlashCard(idx)}
                 style={{ 
                   backgroundColor:"white", 
-                  width:"30vh", 
-                  height:"25vh", 
+                  width:"20vh", 
+                  height:"15vh", 
                   display: "flex", 
                   justifyContent: "center", 
                   alignContent: "center", 
@@ -150,7 +152,7 @@ const Gallery = ({items, collectionID, toggleGallery}) => {
           <NavigateNextIcon fontSize='large' onClick={handleNextClick} />
         </Grid>
       </Grid>
-    </>
+    
   );
 }
 

@@ -26,7 +26,7 @@ import StudioSlider from "@components/StudioUI/StudioSlider";
 //Import studio context provider
 import { StudioContext } from '@components/Contexts/StudioContext';
 import { StudioContextProvider } from "@components/Contexts/StudioContext";
-
+import { studioDrawerAnimationObj, navOptionAnimationObj, studioPreviewAnimationObj, photoGalleryAnimationObj,studioGalleryAnimationObj,drawerContainerAnimationObj } from "@utils/springAnimationObjects";
 
 const Studio = ({params}) => {
     const [menuActiveItem, setMenuActiveItem] = useState(null);
@@ -43,125 +43,132 @@ const Studio = ({params}) => {
         { name: "Uploads", icon:<UploadFileIcon fontSize='large' />, component: <div></div> }
     ]
     //const [sliderValue, setSliderValue] = useState(100);
-    const handleSliderChange = (event, newValue) => {
-        setSliderValue(newValue);   
-    };
+    // const handleSliderChange = (event, newValue) => {
+    //     setSliderValue(newValue);   
+    // };
     const [open, setOpen] = useState(false);
     const [galleryOpen, setGalleryOpen] = useState(false);
     const [shrinkDrawerContainer, setShrinkDrawerContainer] = useState(false);
     const initialLeft = open ? 0 : 425;
     const finalLeft = open ? 425 : 0;
 
-
-    const studioDrawerAnimation = useSpring({
-        width: open ? 390 : 390,
-        transform: open ?  "translateX(60px)" :  "translateX(-440px)",
-        height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
-        backgroundColor: developerModeOn ? "yellow" : "white",
-        config: { duration: 275 }
+    const studioDrawerAnimation = useSpring(studioDrawerAnimationObj(open, galleryOpen, developerModeOn))
+    const navOptionAnimation = useSpring(navOptionAnimationObj(open, galleryOpen, developerModeOn))
+    const studioPreviewAnimation = useSpring(studioPreviewAnimationObj(open, galleryOpen, developerModeOn))
+    const photoGalleryAnimation = useSpring(photoGalleryAnimationObj(open, galleryOpen, developerModeOn))
+    const studioGalleryAnimation = useSpring(studioGalleryAnimationObj(open, galleryOpen, developerModeOn))
+    const drawerContainerAnimation = useSpring(drawerContainerAnimationObj(shrinkDrawerContainer, developerModeOn))
+    // const studioDrawerAnimation = useSpring({
+    //     width: open ? 390 : 390,
+    //     transform: open ?  "translateX(60px)" :  "translateX(-440px)",
+    //     height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
+    //     backgroundColor: developerModeOn ? "yellow" : "white",
+    //     config: { duration: 275 }
        
-    })
+    // })
 
-    const navOptionAnimation = useSpring({
-        from: {
-            height: "calc(100vh - 70px)",
-            backgroundColor:developerModeOn? "yellow": "white",
-            margin: 20,
+    // const navOptionAnimation = useSpring({
+    //     from: {
+    //         height: "calc(100vh - 70px)",
+    //         backgroundColor:developerModeOn? "yellow": "white",
+    //         margin: 20,
             
-        },
-        to: {
-            height: galleryOpen ? "calc(100vh - 270px)" : "calc(100vh - 90px)",
-            config: { duration: 1000 }
-        },
-    });
+    //     },
+    //     to: {
+    //         height: galleryOpen ? "calc(100vh - 270px)" : "calc(100vh - 90px)",
+    //         config: { duration: 1000 }
+    //     },
+    // });
+    
     
  
-    const studioPreviewAnimation = useSpring({
-        from: {
-            width: "calc(100vw - 65px)",
-            marginLeft: 65,
-            height: "calc(100vh - 50px)",
-            backgroundColor: "light-pink",
-        },
-        to: {
-            width: open ? "calc(100vw - 450px)" : "calc(100vw - 65px)",
-            marginLeft: open ? 450 : 65,
-            height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
-            backgroundColor: developerModeOn ? "yellow" : "lightgrey",
-            borderWidth: 0,
-            borderColor: developerModeOn ? "orange" : "lightgrey",
-            config: { duration: 1000 }
-        },
-    });
+    // const studioPreviewAnimation = useSpring({
+    //     from: {
+    //         width: "calc(100vw - 65px)",
+    //         marginLeft: 65,
+    //         height: "calc(100vh - 50px)",
+    //         backgroundColor: "light-pink",
+    //     },
+    //     to: {
+    //         width: open ? "calc(100vw - 450px)" : "calc(100vw - 65px)",
+    //         marginLeft: open ? 450 : 65,
+    //         height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
+    //         backgroundColor: developerModeOn ? "yellow" : "lightgrey",
+    //         borderWidth: 0,
+    //         borderColor: developerModeOn ? "orange" : "lightgrey",
+    //         config: { duration: 1000 }
+    //     },
+    // });
+     
 
-    const photoGalleryAnimation = useSpring({
-        from: {
-             marginTop:20, 
-             backgroundColor: developerModeOn ? "yellow" : "white", 
-             overflow: "auto",
-             height: "calc(100vh - 200px)", 
-        },
-        to: {
-            marginTop:20, 
-            backgroundColor: developerModeOn ? "yellow" : "white", 
-            overflow: "auto",
-            height: galleryOpen? "calc(100vh - 380px)": "calc(100vh - 200px)", 
-            config: { duration: 1000 }
-        },
-    })
+    // const photoGalleryAnimation = useSpring({
+    //     from: {
+    //          marginTop:20, 
+    //          backgroundColor: developerModeOn ? "yellow" : "white", 
+    //          overflow: "auto",
+    //          height: "calc(100vh - 200px)", 
+    //     },
+    //     to: {
+    //         marginTop:20, 
+    //         backgroundColor: developerModeOn ? "yellow" : "white", 
+    //         overflow: "auto",
+    //         height: galleryOpen? "calc(100vh - 380px)": "calc(100vh - 200px)", 
+    //         config: { duration: 1000 }
+    //     },
+    // })
     
-    const studioGalleryAnimation = useSpring({
-        from: {
-            transform:  "translateY(200px)"
-        },
-        to: { 
-            transform: galleryOpen ?  "translateY(0px)" :  "translateY(200px)",
-            config: { duration: 1000 }
-        },
-    });
+    // const studioGalleryAnimation = useSpring({
+    //     from: {
+    //         transform:  "translateY(50px)"
+    //     },
+    //     to: { 
+    //         transform: galleryOpen ?  "translateY(0px)" :  "translateY(50px)",
+    //         config: { duration: 200 }
+    //     },
+    // });
 
-    const drawerContainerAnimation = useSpring({
-        from: {
-            height: "calc(100vh - 50px)",
-            backgroundColor: developerModeOn ? "pink" : "white",
-        },
-        to: {
-            height: shrinkDrawerContainer ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
-            config: { duration: 1000 }
-        },
-    });
+    // const drawerContainerAnimation = useSpring({
+    //     from: {
+    //         height: "calc(100vh - 50px)",
+    //         backgroundColor: developerModeOn ? "pink" : "white",
+    //     },
+    //     to: {
+    //         height: shrinkDrawerContainer ? "calc(100vh - 250px)" : "calc(100vh - 50px)",
+    //         config: { duration: 1000 }
+    //     },
+    // });
 
-    const sliderDivAnimation = useSpring({
-        from: {
-            width: "calc(100vw - 85px)",
-            //marginLeft: 85,
-            //marginRight: 85,
-            height: "40px",
-            backgroundColor: "white",
-            //bottom: "40px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            borderColor: "black",
-            borderWidth: 1,
-            bottom: "0px",
-        },
-        to: {
-            width: open ? "calc(100vw - 480px)" : "calc(100vw - 85px)",
-            //marginLeft: open ? 450 : 65,
-            //height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
-            bottom: galleryOpen ? "185px" : "0px",
-            //backgroundColor: developerModeOn ? "lightgreen" : "lightgrey",
-            //borderWidth: 10,
-            borderColor: developerModeOn ? "teal" : "lightgrey",
-            config: { duration: 1000 }
-        },
-    });
+    // const sliderDivAnimation = useSpring({
+    //     from: {
+    //         width: "calc(100vw - 85px)",
+    //         //marginLeft: 85,
+    //         //marginRight: 85,
+    //         height: "40px",
+    //         backgroundColor: "white",
+    //         //bottom: "40px",
+    //         display: "flex",
+    //         justifyContent: "center",
+    //         alignItems: "center",
+    //         position: "absolute",
+    //         borderColor: "black",
+    //         borderWidth: 1,
+    //         bottom: "0px",
+    //     },
+    //     to: {
+    //         width: open ? "calc(100vw - 480px)" : "calc(100vw - 85px)",
+    //         //marginLeft: open ? 450 : 65,
+    //         //height: galleryOpen ? "calc(100vh - 235px)" : "calc(100vh - 50px)",
+    //         bottom: galleryOpen ? "185px" : "0px",
+    //         //backgroundColor: developerModeOn ? "lightgreen" : "lightgrey",
+    //         //borderWidth: 10,
+    //         borderColor: developerModeOn ? "teal" : "lightgrey",
+    //         config: { duration: 1000 }
+    //     },
+    // });
 
-    function openClicked() {
-        setOpen(!open);
-    }
+    // function openClicked() {
+    //     setOpen(!open);
+    // }
     function galleryOpenClicked() {
         console.log("gallery clicked");
         setShrinkDrawerContainer(!shrinkDrawerContainer);
@@ -176,23 +183,23 @@ const Studio = ({params}) => {
         open ? null : setOpen(!open)
     }
 
-    function handlePhotoInputChange(e) {
-        console.log(e.target.value);
-        setPhotoInputValue(e.target.value)
-    }
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-          console.log('Enter pressed');
-            getPhotos()
-        }
-      };
+    // function handlePhotoInputChange(e) {
+    //     console.log(e.target.value);
+    //     setPhotoInputValue(e.target.value)
+    // }
+    // const handleKeyPress = (e) => {
+    //     if (e.key === 'Enter') {
+    //       console.log('Enter pressed');
+    //         getPhotos()
+    //     }
+    //   };
       async function getPhotos() {
         const response = await fetch(`/api/images/search?query=${photoInputValue}`);
         //const response = await fetch(`/api/test`);
 
-        // if (!response.ok) {
-        //     throw new Error('Network response was not ok');
-        // }
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
 
         const data = await response.json();
         
@@ -201,18 +208,18 @@ const Studio = ({params}) => {
         setPhotoSearchResults(data.results)
 
     }
-    const marks = [
+    // const marks = [
         
-        { value: 50, label: '50' },
-        { value: 75, label: '75' },
-        { value: 100, label: '100' },
-        { value: 125, label: '125' },
-        { value: 150, label: '150' },
-      ];
+    //     { value: 50, label: '50' },
+    //     { value: 75, label: '75' },
+    //     { value: 100, label: '100' },
+    //     { value: 125, label: '125' },
+    //     { value: 150, label: '150' },
+    //   ];
  
     return (
         
-        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor: developerModeOn ? "blue" : "white"}}>
+        <div style={{marginTop:0, height:"calc(100vh-250px)", backgroundColor: developerModeOn ? "blue" : "light-gray"}}>
             <div className='studio-sidenav'>
 
 
@@ -334,11 +341,12 @@ const Studio = ({params}) => {
                                 
                             </div>
 
-                            <StudioSlider />
+                            {/* <StudioSlider open={open} galleryOpen={galleryOpen} developerModeOn={developerModeOn}/> */}
                         </animated.div>
                     
                 {/* </animated.div> */}
                 <animated.div className="gallery-container" style={studioGalleryAnimation}>
+                    <StudioSlider open={open} galleryOpen={galleryOpen} developerModeOn={developerModeOn}/>
                     <Gallery collectionID={params.collectionID} toggleGallery={galleryOpenClicked}/>
                 </animated.div>
             {/* </div> */}
